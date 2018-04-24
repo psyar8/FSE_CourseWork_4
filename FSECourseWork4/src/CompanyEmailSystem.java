@@ -11,7 +11,7 @@ public class CompanyEmailSystem {
     public static void main(String[] args) {
         
         ///////
-        //Startup
+        //Startup Aidan
         //////
         GlobalProjectCounter = 0;
         AllProjects = new ArrayList<CompanyProject>();
