@@ -1,11 +1,15 @@
 
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
+import static org.hamcrest.CoreMatchers.instanceOf;
+
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -13,18 +17,28 @@ import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+
+
 /* FixMethodOrder is used to ensure tests run sequentially as they are written - AR: 25.04.18 */
 @FixMethodOrder(MethodSorters.JVM)
 public class CompanyProjectTestAidan {
 
-	static CompanyProject project1;
-	/* Before class is run once at the very start of the test - AR: 25.04.18 
+	CompanyProject project1;
+	int lengthProjects = CompanyEmailSystem.ProjectPhases.length;
+	String kCONTACT1 = "me@me.com";
+	String kCONTACT2 = "bigben@me.com";
+	String kCONTACT3 = "london@me.com";
+	
+	/* Before  is run once at the very start of the test - AR: 25.04.18 
 	 * Test checked to make sure object is created
 	 * */
-	@BeforeClass
-	public static void settingUp() {
+	@Before
+	public  void settingUp() {
 		project1 = new CompanyProject();
 		assertNotNull(project1);
+		project1.addContact(kCONTACT1);
+		project1.addContact(kCONTACT2);
+		project1.addContact(kCONTACT3);
 	}
 	
 	@Test
@@ -40,6 +54,7 @@ public class CompanyProjectTestAidan {
 	public void getPhaseID_FirstStage() {
 		assertEquals(1, project1.getPhaseByID());
 	}
+	
 	
 	@Test
 	/*
@@ -57,66 +72,26 @@ public class CompanyProjectTestAidan {
 		assertEquals(2, project1.getPhaseByID());
 	}
 	
-	@Test
-	/*
-	 * Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
-	 * Test ID: 215
-	 * Date Tested: 25.04.2018
-	 * Test Result: PASS
-	 * Notes: Checks phaseID value of a project moved to third stage
-	 * 		  Also checks correct return value of nextPhase method
-	 */
-	public void getPhaseID_ThirdStage() {
-		assertTrue(project1.nextPhase());
-		assertEquals(3, project1.getPhaseByID());
-	}
 	
 	@Test
 	/*
 	 * Author: Aidan Reed
 	 * Co-Author: Christian Stubbs
-	 * Test ID: 216
+	 * Test ID: ?
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
-	 * Notes: Checks phaseID value of a project moved to forth stage
-	 * 		  Also checks correct return value of nextPhase method
-	 */
-	public void getPhaseID_ForthStage() {
-		assertTrue(project1.nextPhase());
-		assertEquals(4, project1.getPhaseByID());
-	}
-	
-	@Test
-	/*
-	 * Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
-	 * Test ID: 217
-	 * Date Tested: 25.04.2018
-	 * Test Result: PASS
-	 * Notes: Checks phaseID value of a project moved to fith stage
-	 * 		  Also checks correct return value of nextPhase method
-	 */
-	public void getPhaseID_FifthStage() {
-		assertTrue(project1.nextPhase());
-		assertEquals(5, project1.getPhaseByID());
-	}
-	
-	@Test
-	/*
-	 * Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
-	 * Test ID: 218
-	 * Date Tested: 25.04.2018
-	 * Test Result: PASS
-	 * Notes: Checks phaseID value of a project moved to final (6th) stage
+	 * Notes: Checks phaseID value of a project moved from 2 until 6th
 	 * 		  Also checks correct return value of nextPhase method
 	 */
 	
-	public void getPhaseID_FinalStage() {
-		assertTrue(project1.nextPhase());
-		assertEquals(6, project1.getPhaseByID());
+	public void getPhaseID_AllStages() {
+		
+		for (int i = 1; i <= lengthProjects; i++, project1.nextPhase()) {
+			assertEquals(i, project1.getPhaseByID());
+		}
 	}
+	
+	
 	
 	@Test
 	/*
@@ -130,9 +105,13 @@ public class CompanyProjectTestAidan {
 	 * 		  Also checks correct return value of nextPhase method
 	 */
 	public void getPhaseID_FinalStageToNext() {
-		assertFalse(project1.nextPhase());
+		
+		for (int i = 1; i <= lengthProjects; i++, project1.nextPhase())
+			;
 		assertEquals(6, project1.getPhaseByID());
 	}
+	
+	
 	
 	@Test
 	/*
@@ -145,19 +124,68 @@ public class CompanyProjectTestAidan {
 	 * 		  from the final stage.
 	 * 		  Also checks correct return value of nextPhase method
 	 */
-	public void getPhaseID_FirstStageToPrevious() {
+	public void getPhaseID_FirstStageToPrevious () {
 		/* there is no previous phase method in place to test this
 			assertFalse(project1.nextPhase());
 		*/
 		assertEquals(5, project1.getPhaseByID());
 	}
 	
-	@AfterClass
-	public static void cleanUpTests () {
+	
+	@Test 
+	/*	
+	 *  Author: Aidan Reed
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 222
+	 * Date Tested: 
+	 * Test Result: 
+	 * Notes: Checks get contacts method returns an Array List
+	 * 		  
+	 */
+	
+	public void getProjectContacts_TypeCheckArrayList () {
+		assertThat(project1.getProjectContacts(), instanceOf(ArrayList.class));
+	}
+	
+	
+	@Test 
+	/*	
+	 *  Author: Aidan Reed
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 223
+	 * Date Tested: 
+	 * Test Result: 
+	 * Notes: Checks get contacts method returns and the 
+	 *        first element is equal to kCONTACT1 constant 
+	 */
+	
+	public void getProjectContacts_FirstElement () {
+		assertEquals(kCONTACT1, project1.getProjectContacts().get(0));
+	}
+	
+	
+	
+	@Test 
+	/*	
+	 *  Author: Aidan Reed
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 224
+	 * Date Tested: 
+	 * Test Result: 
+	 * Notes: Checks get contacts method type of element inside the ArrayList
+	 * 		  is of type string
+	 */
+	
+	public void getProjectContacts_ElementType () {
+		assertThat(project1.getProjectContacts().get(0), instanceOf(String.class));
+	}
+	x
+	
+	@After
+	public void cleanUpTests () {
 		/*Removes the object reference free for garbage collection - AR: 25.04.18 */
 		project1 = null;
 	}
-	
 	
 
 }
