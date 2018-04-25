@@ -28,13 +28,14 @@ public class CompanyProjectTestAidan {
 	String kCONTACT1 = "me@me.com";
 	String kCONTACT2 = "bigben@me.com";
 	String kCONTACT3 = "london@me.com";
+	String kPROTITLE = "New Email Platform";
 	
 	/* Before  is run once at the very start of the test - AR: 25.04.18 
 	 * Test checked to make sure object is created
 	 * */
 	@Before
 	public  void settingUp() {
-		project1 = new CompanyProject();
+		project1 = new CompanyProject(kPROTITLE);
 		assertNotNull(project1);
 		project1.addContact(kCONTACT1);
 		project1.addContact(kCONTACT2);
@@ -179,7 +180,56 @@ public class CompanyProjectTestAidan {
 	public void getProjectContacts_ElementType () {
 		assertThat(project1.getProjectContacts().get(0), instanceOf(String.class));
 	}
-	x
+	
+	
+	
+	@Test 
+	/*	
+	 *  Author: Aidan Reed
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 225
+	 * Date Tested: 
+	 * Test Result: 
+	 * Notes: Checks toString method returns value is of type string
+	 */
+	
+	public void toStringOverride_TypeCheck () {
+		assertThat(project1.toString(), instanceOf(String.class));
+	}
+	
+	
+	@Test 
+	/*	
+	 *  Author: Aidan Reed
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 226
+	 * Date Tested: 
+	 * Test Result: 
+	 * Notes: Checks toString method returns correct String 
+	 * 		  In the form "Project Title [Project Phase]
+	 */
+	
+	public void toStringOverride_ValueCheck () {
+		String expected = kPROTITLE + " [" + CompanyEmailSystem.ProjectPhases[0] + "]";
+		assertEquals(expected, project1.toString());
+	}
+	
+	
+	@Test 
+	/*	
+	 *  Author: Aidan Reed
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 226
+	 * Date Tested: 
+	 * Test Result: 
+	 * Notes: Checks toString method returns correct String 
+	 * 		  In the form "Project Title [Project Phase]
+	 */
+	
+	public void toStringOverride_ValueCheckFullProcess () {
+		
+	}
+	
 	
 	@After
 	public void cleanUpTests () {
