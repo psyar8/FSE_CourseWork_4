@@ -12,7 +12,7 @@ import org.junit.Test;
 
 /* FixMethodOrder is used to ensure tests run sequentially as they are written - AR: 25.04.18 */
 @FixMethodOrder(MethodSorters.JVM)
-public class CompanyEmailTestAidan {
+public class CompanyProjectTestAidan {
 
 	static CompanyProject project1;
 	/* Before class is run once at the very start of the test - AR: 25.04.18 */
