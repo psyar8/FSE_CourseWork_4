@@ -1,11 +1,8 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import java.util.ArrayList;
 import static org.hamcrest.CoreMatchers.instanceOf;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
@@ -16,8 +13,6 @@ import org.junit.Test;
 /* FixMethodOrder is used to ensure tests run sequentially as they are written - AR: 26.04.18 */
 @FixMethodOrder(MethodSorters.JVM)
 public class CompanyEmailAidan {
-
-	
 
 	String kFROMADDR1 = "nottingham@me.co.uk";
 	String kTOADDR1 = "london@me.co.uk";
@@ -76,7 +71,7 @@ public class CompanyEmailAidan {
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when all attributes are not set
 	 */
-	public void checkvalidity_AllNull () {
+	public void checkValidity_AllNull () {
 		assertFalse(email2.isValid());
 	}
 	
@@ -88,8 +83,128 @@ public class CompanyEmailAidan {
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when all attributes are set
 	 */
-	public void checkvalidity_AllSet () {
+	public void checkValidity_AllSet () {
 		assertTrue(email3.isValid());
+	}
+	
+	@Test
+	/* Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 104
+	 * Date Tested: 26.04.2018
+	 * Test Result: PASS
+	 * Notes: Checks the validity of a email object when only one attribute is set
+	 * 		  at once. This case is setFrom
+	 */
+	public void checkValidity_Individual_SetFrom () {
+		email2.setFrom(kFROMADDR1);
+		assertFalse(email2.isValid());
+	}
+	
+	@Test
+	/* Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 105
+	 * Date Tested: 26.04.2018
+	 * Test Result: PASS
+	 * Notes: Checks the validity of a email object when only one attribute is set
+	 * 		  at once. This case is setTo
+	 */
+	public void checkValidity_Individual_SetTo () {
+		email2.setTo(kTOADDR1);
+		assertFalse(email2.isValid());
+	}
+	
+
+	@Test
+	/* Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 106
+	 * Date Tested: 26.04.2018	
+	 * Test Result: PASS
+	 * Notes: Checks the validity of a email object when only one attribute is set
+	 * 		  at once. This case is setSubject
+	 */
+	public void checkValidity_Individual_SetSubject () {
+		email2.setSubject(kSUBJECT1);
+		assertFalse(email2.isValid());	
+	}
+	
+	@Test
+	/* Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 107
+	 * Date Tested: 26.04.2018
+	 * Test Result: PASS
+	 * Notes: Checks the validity of a email object when only one attribute is set
+	 * 		  at once. This case is setMessage
+	 */
+	public void checkValidity_Individual_SetMessage () {
+		email2.setMessage(kEMAILBODY1);
+		assertFalse(email2.isValid());	
+	}
+	
+	
+	@Test 
+	/*	
+	 *  Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 108
+	 * Date Tested: PASS
+	 * Test Result: 26.04.2018
+	 * Notes: Checks toString method returns value is of type string
+	 */
+	
+	public void toStringOverride_TypeCheck () {
+		assertThat(email1.toString(), instanceOf(String.class));
+	}
+	
+	
+	@Test 
+	/*	
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 109
+	 * Date Tested: 26.04.2018
+	 * Test Result: PASS
+	 * Notes: Checks toString method returns correct String 
+	 * 		  In the form Correct Subject set
+	 */
+	
+	public void toStringOverride_ValueCheck_SetSubject () {
+		email2.setSubject(kSUBJECT1);
+		assertEquals(kSUBJECT1, email2.toString());
+	}
+	
+	@Test 
+	/*	
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 110
+	 * Date Tested: 26.04.2018
+	 * Test Result: PASS
+	 * Notes: Checks toString method returns correct String 
+	 * 		  When subject is empty string
+	 */
+	
+	public void toStringOverride_ValueCheck_EmptyString () {
+		email2.setSubject("");
+		assertEquals("[no subject]", email2.toString());
+	}
+	
+	@Test 
+	/*	
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 111
+	 * Date Tested: 26.04.2018
+	 * Test Result: FAIL
+	 * Notes: Checks toString method returns correct String 
+	 * 		  When subject is not set at all
+	 */
+	
+	public void toStringOverride_ValueCheck_Null () {
+		assertEquals("[no subject]", email2.toString());
 	}
 	
 	

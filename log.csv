@@ -1,0 +1,26 @@
+Commit ID,Author,Date / Time,Comments
+29f76b6,Aidan Reed,Thu Apr 26 14:27:17 2018 +0100,Added 2/3 tests for email class
+af3246a,Justin Ng,Wed Apr 25 23:28:31 2018 +0100,Added test files
+8504e7b,Justin Ng,Wed Apr 25 23:23:47 2018 +0100,Added tests and documented
+ae1c739,Aidan Reed,Wed Apr 25 20:04:34 2018 +0100,Added the toString test methods and documented
+6d090f8,Aidan Reed,Wed Apr 25 19:36:20 2018 +0100,Finished tests for get Project Contact Function
+c289d8c,Aidan Reed,Wed Apr 25 18:46:41 2018 +0100,Added notes to unit tests
+fc9645d,Aidan Reed,Wed Apr 25 17:05:28 2018 +0100,Name change of unit test'
+47fbef8,Aidan Reed,Wed Apr 25 17:03:11 2018 +0100,Finished unit testing for getPhaseID Included Documentation for passes and fails in word document
+934c17f,Aidan Reed,Wed Apr 25 16:10:58 2018 +0100,AR basic body of tests for Project getPhaseID method
+92210cc,Aidan Reed,Wed Apr 25 15:32:58 2018 +0100,Added AR Email and Project JUnit tests under JUnitTests Package
+eb89f6b,Aidan Reed,Wed Apr 25 15:28:18 2018 +0100,Added AR EmailProjects Document
+f44ab0e,Justin Ng,Tue Apr 24 12:47:08 2018 +0100,Merge branch 'master' of https://github.com/psyar8/FSE_CourseWork_4
+485625b,Justin Ng,Tue Apr 24 12:46:53 2018 +0100,Added Files for Testing
+964687,Aidan Reed,Tue Apr 24 12:40:18 2018 +0100,Added guideline comments for jnuit
+2862827,psyrr1,Tue Apr 24 12:38:54 2018 +0100,Updated CompanyEmail document with missing test plans
+d79b59a,Aidan Reed,Tue Apr 24 12:36:02 2018 +0100,Added ExampleTest JUnit
+9db7c33,Aidan Reed,Tue Apr 24 12:26:15 2018 +0100,bug list and change list included for each document
+aeae6c5,psyar8,Tue Apr 24 12:04:50 2018 +0100,Delete ~$mpanyEmailProject.docx
+4b933b0,Aidan Reed,Tue Apr 24 11:59:52 2018 +0100,Three word docs for one for each class
+17df20d,psyrr1,Tue Apr 24 11:55:08 2018 +0100,Merge branch 'master' of https://github.com/psyar8/FSE_CourseWork_4
+bcc7dc2,psyrr1,Tue Apr 24 11:54:18 2018 +0100,Test Document Added
+2402010,Aidan Reed,Tue Apr 24 11:52:03 2018 +0100,Ar removed comments
+b0a713e,Aidan Reed,Tue Apr 24 11:49:57 2018 +0100,Ar added comment
+01931ed,Aidan Reed,Tue Apr 24 11:29:32 2018 +0100,Initial project creation in eclipse
+55ec882,Aidan Reed,Tue Apr 24 11:13:32 2018 +0100,Initial commit
