@@ -36,10 +36,10 @@ public class CompanyEmail {
      * Author: Aidan Reed
      * Date: 27.04.2018
      * Notes: Removed return emailMessage() Call and replaced with
-     * 		  return emailMessage;
+     * 		  return emailMessage; Used keyword this to diff between method
      */
     public String emailMessage() {
-        return emailMessage();
+        return this.emailMessage;
     }
     
     public void setFrom(String fromAddr) {
