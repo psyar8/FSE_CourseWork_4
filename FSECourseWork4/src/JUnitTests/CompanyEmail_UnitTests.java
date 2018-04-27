@@ -13,6 +13,11 @@ public class CompanyEmail_UnitTests {
 	
 	final String kSENDER = "joe.bloggs@gmail.com";
 	final String kRECIPIENT = "max.power@live.com";
+	final String kBADEMAIL1 = "joe.bloggs@";
+	final String kBADEMAIL2 = "joe.@bloggs";
+	final String kBADEMAIL3 = "joe.bloggs@gmail@.com";
+	final String kBADEMAIL4 = "@joe.bloggs@gmail.com";
+
 	final String kSUBJECT = "RE: Lorem ipsum";
 	final String kBODY1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 	final String kBODY2 = "This is a test email for using unit testing";
@@ -486,6 +491,49 @@ public class CompanyEmail_UnitTests {
 	        int accessValue = field.getModifiers();
 	        assertTrue(Modifier.isPrivate(accessValue));
 	    }
+	}
+	
+	@Test
+	/* 
+	 * Testing validity of full email when using setTo
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 132
+	 * Date Tested: 27.04.2018	
+	 * Test Result: FAIL
+	 * Notes: Checks for bad email combinations and if they were set
+	 */
+	public void testValidateFullEmail_ToAddress () {
+		nullEmail.setTo(kBADEMAIL1);
+		assertNull(nullEmail.toAddress());
+		nullEmail.setTo(kBADEMAIL2);
+		assertNull(nullEmail.toAddress());
+		nullEmail.setTo(kBADEMAIL3);
+		assertNull(nullEmail.toAddress());
+		nullEmail.setTo(kBADEMAIL4);
+		assertNull(nullEmail.toAddress());
+	}
+	
+	
+	@Test
+	/* 
+	 * Testing validity of full email when using setTo
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 132
+	 * Date Tested: 27.04.2018	
+	 * Test Result: FAIL
+	 * Notes: Checks for bad email combinations and if they were set
+	 */
+	public void testValidateFullEmail_FromAddress () {
+		nullEmail.setFrom(kBADEMAIL1);
+		assertNull(nullEmail.fromAddress());
+		nullEmail.setFrom(kBADEMAIL2);
+		assertNull(nullEmail.fromAddress());
+		nullEmail.setFrom(kBADEMAIL3);
+		assertNull(nullEmail.fromAddress());
+		nullEmail.setFrom(kBADEMAIL4);
+		assertNull(nullEmail.fromAddress());
 	}
 
 }
