@@ -31,10 +31,10 @@ public class CompanyEmailTestAthullya {
 	 * Co-Author: Ram Raja
 	 * Test ID: 109
 	 * Date Tested: 26.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */
 	public void testSubjectLineNull() {
-		assertEquals(null, nullSubject.subjectLine());
+		assertEquals(null, nullSubject.subjectLine()); 
 	}
 	
 
@@ -44,7 +44,7 @@ public class CompanyEmailTestAthullya {
 	 * Co-Author: Ram Raja
 	 * Test ID: 110
 	 * Date Tested: 26.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */
 	
 	@Test
@@ -74,7 +74,7 @@ public class CompanyEmailTestAthullya {
 	 * Co-Author: Ram Raja
 	 * Test ID: 112
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: FAIL
 	 */	
 	public void testSubjectBodyNull(){
 		assertNull(nullSubject.emailMessage());
@@ -88,9 +88,9 @@ public class CompanyEmailTestAthullya {
 	 * Co-Author: Ram Raja
 	 * Test ID: 113
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */	
-	public void testSetFrom1(){
+	public void testSetFromCorrectFormat(){
 		populatedSubject.setFrom(SENDER);
 		assertEquals(SENDER, populatedSubject.fromAddress());
 	}
@@ -102,17 +102,10 @@ public class CompanyEmailTestAthullya {
 	 * Co-Author: Ram Raja
 	 * Test ID: 114
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: FAIL
 	 */	
-	public void testSetFrom2(){
-		try {
-			populatedSubject.setFrom("joe.bloggs");
-		}catch (Exception e) {
-			populatedSubject=null;
-			assertEquals(e.getClass(), Exception.class);
-		}finally {
-			System.out.println("fail");
-		}
+	public void testSetFromIncorrectFormat(){
+		assertFalse(populatedSubject.setFrom("joe.bloggs"));
 	}
 	
 	
@@ -123,9 +116,9 @@ public class CompanyEmailTestAthullya {
 	 * Co-Author: Ram Raja
 	 * Test ID: 115
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */	
-	public void testSetTo1(){
+	public void testSetToCorrectFormat(){
 		
 		populatedSubject.setTo(RECIPIENT);
 		assertEquals(RECIPIENT, populatedSubject.toAddress());
@@ -138,19 +131,39 @@ public class CompanyEmailTestAthullya {
 	 * Co-Author: Ram Raja
 	 * Test ID: 116
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result:FAIL
 	 */	
-	public void testSetTo2() {
-		try {
-			populatedSubject.setTo("max.power");
+	public void testSetToIncorrectFormat() {
+		assertFalse(populatedSubject.setTo("joe.bloggs"));
 
-		}catch (Exception e) {
-			populatedSubject=null;
-			assertEquals(e.getClass(), Exception.class);
-		}
-		
 	}
 
+	@Test
+	/* 
+	 * Testing setSubject()
+	 * Author: Athullya Roy
+	 * Co-Author: Ram Raja
+	 * Test ID: 117
+	 * Date Tested: 27.04.2018
+	 * Test Result:PASS
+	 */	
+	public void testSetSubjectStringPassed() {
+		populatedSubject.setSubject(SUBJECT);
+		assertEquals(SUBJECT, populatedSubject.subjectLine());
+	}
 	
+	@Test
+	/* 
+	 * Testing setSubject()
+	 * Author: Athullya Roy
+	 * Co-Author: Ram Raja
+	 * Test ID: 118
+	 * Date Tested: 27.04.2018
+	 * Test Result: FAIL
+	 */	
+	public void testSetSubjectNullPassed() {
+		populatedSubject.setSubject(null);
+		assertEquals(null, populatedSubject.subjectLine());
+	}
 	
 }
