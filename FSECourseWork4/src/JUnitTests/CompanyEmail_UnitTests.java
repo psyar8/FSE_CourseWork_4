@@ -319,7 +319,7 @@ public class CompanyEmail_UnitTests {
 	public void setEmailBody_EmptyString () {
 		noEmailBody.setMessage(kBODY3);
 		/*Now need to use emailMessage method to check it was input*/
-		assertEquals(kBODY2, noEmailBody.emailMessage());
+		assertEquals(kBODY3, noEmailBody.emailMessage());
 	}
 	
 	@Test
@@ -500,7 +500,7 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 132
 	 * Date Tested: 27.04.2018	
-	 * Test Result: FAIL
+	 * Test Result: PASS
 	 * Notes: Checks for bad email combinations and if they were set
 	 */
 	public void testValidateFullEmail_ToAddress () {
@@ -522,7 +522,7 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 132
 	 * Date Tested: 27.04.2018	
-	 * Test Result: FAIL
+	 * Test Result: PASS
 	 * Notes: Checks for bad email combinations and if they were set
 	 */
 	public void testValidateFullEmail_FromAddress () {

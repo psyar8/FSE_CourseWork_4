@@ -1,5 +1,8 @@
 package EmailSystem;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CompanyEmail {
     private String fromAddress;
     private String toAddress;
@@ -44,16 +47,48 @@ public class CompanyEmail {
         return this.emailMessage;
     }
     
+    
+    /*
+     * Change Impact: setFrom()
+     * ChangeID: CHG003
+     * Author: Aidan Reed
+     * Date: 27.04.2018
+     * Notes: Added method call to emailParser to validate email
+     */
     public void setFrom(String fromAddr) {
-        if (fromAddr.contains("@")) {
+        if (emailParser(fromAddr)) {
             fromAddress = fromAddr;
         }
     }
     
+    /*
+     * Change Impact: setTo()
+     * ChangeID: CHG003
+     * Author: Aidan Reed
+     * Date: 27.04.2018
+     * Notes: Added method call to emailParser to validate email
+     */
     public void setTo(String toAddr) {
-        if (toAddr.contains("@")) {
-            toAddress = toAddr;
-        }
+    	if(emailParser(toAddr)) {
+    		toAddress = toAddr;
+    	}
+    }
+    
+    /*
+     * Change Impact: new method emailParser
+     * ChangeID: CHG003
+     * Author: Aidan Reed
+     * Date: 27.04.2018
+     * Notes: Added a regular expression to check the validity of emails returns 
+     * 		  boolean for calling function
+     */
+    public boolean emailParser (String address) {
+    	String regExValidate = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    	Matcher emailMatcher = Pattern.compile(regExValidate).matcher(address);
+    	if (emailMatcher.matches()) {
+    		return true;
+    	}
+    	return false;
     }
     
     public void setSubject(String subLine) {
