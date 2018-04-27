@@ -12,12 +12,7 @@ public class CompanyEmail {
         subjectLine = null;
         emailMessage = null;
     }
-    /*
-     * Change ID:
-     * Changed By: 
-     * Changed On:
-     * Reason: 
-     */
+
     public CompanyEmail(String fAddress, String tAddress, String subLine, String eMessage) {
     	fromAddress = fAddress;
     	toAddress = tAddress;

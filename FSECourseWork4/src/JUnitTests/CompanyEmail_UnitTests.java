@@ -2,11 +2,12 @@ package JUnitTests;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import EmailSystem.CompanyEmail;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 public class CompanyEmail_UnitTests {
 	
@@ -464,6 +465,27 @@ public class CompanyEmail_UnitTests {
 	
 	public void toStringOverride_ValueCheck_Null () {
 		assertEquals("[no subject]", nullEmail.toString());
+	}
+	
+	
+	@Test
+	/* 
+	 * Testing accessibility of all fields in CompanyEmail
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 131
+	 * Date Tested: 26.04.2018
+	 * Test Result: PASS
+	 * Notes: Fields with access value of 2 is the Int representation
+	 * 		  of the private access modifier
+	 */
+	public void testFieldAccessorType () {
+		Field[] companyEmailMembers = CompanyEmail.class.getDeclaredFields();
+		
+	    for (Field field : companyEmailMembers) {
+	        int accessValue = field.getModifiers();
+	        assertTrue(Modifier.isPrivate(accessValue));
+	    }
 	}
 
 }
