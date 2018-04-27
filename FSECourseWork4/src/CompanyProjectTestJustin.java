@@ -22,7 +22,7 @@ public class CompanyProjectTestJustin {
 	/*
 	 * Author: Justin Ng
 	 * Co-Author: Christian Stubbs
-	 * Test ID: 203
+	 * Test ID: 203.1
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks that PID inits from 1 on creation
@@ -35,9 +35,25 @@ public class CompanyProjectTestJustin {
 	/*
 	 * Author: Justin Ng
 	 * Co-Author: Christian Stubbs
+	 * Test ID: 203.2
+	 * Date Tested: 27.04.2018
+	 * Test Result: PASS
+	 * Notes: Checks that PID increments correctly after two more projects are made
+	 */
+	public void testGetPID_SecondStage() {
+		setUp();
+		setUp();
+		assertEquals(3, newCompanyProject.getPID());
+	}
+	
+	@Test
+	/*
+	 * Author: Justin Ng
+	 * Co-Author: Christian Stubbs
 	 * Test ID: 204
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
+	 * Notes: Checks that the project title is initialised correctly and can be returned
 	 */
 	public void testGetPTitle() {
 		assertEquals("New Project", newCompanyProject.getPTitle());
@@ -50,6 +66,7 @@ public class CompanyProjectTestJustin {
 	 * Test ID: 205.1
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
+	 * Notes: Checks that the title cannot be set if it is less than 10 characters long and should initialise title correctly
 	 */
 	public void testSetPTitleShort() {
 		newCompanyProject.setPTitle("12345678");
@@ -63,6 +80,7 @@ public class CompanyProjectTestJustin {
 	 * Test ID: 205.2
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
+	 * Notes: Checks that the title can be set and called again if more than 10 chars long
 	 */
 	public void testSetPTitle() {
 		newCompanyProject.setPTitle("123456789000");
@@ -76,6 +94,7 @@ public class CompanyProjectTestJustin {
 	 * Test ID: 206.1
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
+	 * Notes: Checks if contact exists in newly created Array List
 	 */
 	public void testIsContact() {
 		/* Check if contact exists in empty Array List - JN: 25.04.18 */
