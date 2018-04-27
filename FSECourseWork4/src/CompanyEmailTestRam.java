@@ -3,17 +3,20 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.*;
+
+
 public class CompanyEmailTestRam {
 	
-	public final String SENDER = "joe.bloggs@gmail.com";
-	public final String RECIPIENT = "max.power@live.com";
-	public final String SUBJECT = "RE: Lorem ipsum";
-	public final String BODY = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+	private final String SENDER = "joe.bloggs@gmail.com";
+	private final String RECIPIENT = "max.power@live.com";
+	private final String SUBJECT = "RE: Lorem ipsum";
+	private final String BODY = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 	
-	CompanyEmail nullEmail;
-	CompanyEmail populatedEmail;
-	CompanyEmail senderEmail;
-	CompanyEmail noRecipientEmail;
+	private CompanyEmail nullEmail;
+	private CompanyEmail populatedEmail;
+	private CompanyEmail senderEmail;
+	private CompanyEmail noRecipientEmail;
 	
 	@Before
 	public void setup() {
@@ -119,4 +122,21 @@ public class CompanyEmailTestRam {
 		assertEquals(null, nullToAddress);
 	}
 	
+	@Test
+	/* 
+	 * Testing accessibility of all fields in CompanyEmail
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 109
+	 * Date Tested: 26.04.2018
+	 * Test Result: PASS
+	 */
+	public void testFieldAccessorType () {
+		Field[] companyEmailFields = CompanyEmail.class.getDeclaredFields();
+	    for (Field field : companyEmailFields) {
+	        int modVal = field.getModifiers();
+	        assertTrue(Modifier.isPrivate(modVal));
+	        //Fields with a modVal of 2 (private) should return true
+	    }
+	}
 }
