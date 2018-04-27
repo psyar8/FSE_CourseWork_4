@@ -30,7 +30,7 @@ public class CompanyEmailTestRam {
 	 * Co-Author: Athullya Roy
 	 * Test ID: 101
 	 * Date Tested: 26.04.2018
-	 * Test Result: PASS
+	 * Test Result: FAIL
 	 */
 	public void testDefaultConstructor() {
 		assertNull(nullEmail.fromAddress());
@@ -46,7 +46,7 @@ public class CompanyEmailTestRam {
 	 * Co-Author: Athullya Roy
 	 * Test ID: 102
 	 * Date Tested: 26.04.2018
-	 * Test Result: PASS
+	 * Test Result: FAIL
 	 */
 	public void testMainConstructor_allParam() {
 		assertNotNull(populatedEmail.fromAddress());
@@ -62,7 +62,7 @@ public class CompanyEmailTestRam {
 	 * Co-Author: Athullya Roy
 	 * Test ID: 103
 	 * Date Tested: 26.04.2018
-	 * Test Result: PASS
+	 * Test Result: FAIL
 	 */
 	public void testMainConstructor_recipientParam() {
 		assertNotNull(noRecipientEmail.fromAddress());
@@ -78,7 +78,7 @@ public class CompanyEmailTestRam {
 	 * Co-Author: Athullya Roy
 	 * Test ID: 104
 	 * Date Tested: 26.04.2018
-	 * Test Result: PASS
+	 * Test Result: FAIL
 	 */
 	public void testMainConstructor_senderParam() {
 		assertNotNull(senderEmail.fromAddress());
