@@ -136,7 +136,6 @@ public class CompanyEmail_UnitTests {
 		assertEquals(null, nullToAddress);
 	}
 	
-	
 	@Test
 	/* 
 	 * Testing subjectLine()
@@ -144,24 +143,27 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 109
 	 * Date Tested: 26.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */
 	public void testSubjectLineNull() {
-		assertEquals(null, nullEmail.subjectLine());
+		assertEquals(null, nullEmail.subjectLine()); 
 	}
 	
-	@Test
+
 	 /* 
 	 * Testing subjectLine()
 	 * Author: Athullya Roy
 	 * Co-Author: Ram Raja
 	 * Test ID: 110
 	 * Date Tested: 26.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */
+	
+	@Test
 	public void testSubjectLineNotNull() {
 		assertNotNull(populatedEmail.subjectLine());
 	}
+	
 	
 	@Test
 	/* 
@@ -185,7 +187,7 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 112
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: FAIL
 	 */	
 	public void testSubjectBodyNull(){
 		assertNull(nullEmail.emailMessage());
@@ -199,11 +201,11 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 113
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */	
-	public void testSetFrom1(){
-		nullEmail.setFrom(kSENDER);
-		assertEquals(kSENDER, nullEmail.fromAddress());
+	public void testSetFromCorrectFormat(){
+		populatedEmail.setFrom(kSENDER);
+		assertEquals(kSENDER, populatedEmail.fromAddress());
 	}
 	
 	@Test
@@ -213,17 +215,10 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 114
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: FAIL
 	 */	
-	public void testSetFrom2(){
-		try {
-			nullEmail.setFrom("joe.bloggs");
-		}catch (Exception e) {
-			nullEmail=null;
-			assertEquals(e.getClass(), Exception.class);
-		}finally {
-			System.out.println("fail");
-		}
+	public void testSetFromIncorrectFormat(){
+		assertFalse(populatedEmail.setFrom("joe.bloggs"));
 	}
 	
 	
@@ -234,12 +229,12 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 115
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result: PASS
 	 */	
-	public void testSetTo1(){
+	public void testSetToCorrectFormat(){
 		
-		nullEmail.setTo(kRECIPIENT);
-		assertEquals(kRECIPIENT, nullEmail.toAddress());
+		populatedEmail.setTo(kRECIPIENT);
+		assertEquals(kRECIPIENT, populatedEmail.toAddress());
 	}
 	
 	@Test
@@ -249,17 +244,39 @@ public class CompanyEmail_UnitTests {
 	 * Co-Author: Ram Raja
 	 * Test ID: 116
 	 * Date Tested: 27.04.2018
-	 * Test Result: 
+	 * Test Result:FAIL
 	 */	
-	public void testSetTo2() {
-		try {
-			nullEmail.setTo("max.power");
+	public void testSetToIncorrectFormat() {
+		assertFalse(populatedEmail.setTo("joe.bloggs"));
 
-		}catch (Exception e) {
-			nullEmail=null;
-			assertEquals(e.getClass(), Exception.class);
-		}
-		
+	}
+
+	@Test
+	/* 
+	 * Testing setSubject()
+	 * Author: Athullya Roy
+	 * Co-Author: Ram Raja
+	 * Test ID: 117
+	 * Date Tested: 27.04.2018
+	 * Test Result:PASS
+	 */	
+	public void testSetSubjectStringPassed() {
+		populatedEmail.setSubject(kSUBJECT);
+		assertEquals(kSUBJECT, populatedEmail.subjectLine());
+	}
+	
+	@Test
+	/* 
+	 * Testing setSubject()
+	 * Author: Athullya Roy
+	 * Co-Author: Ram Raja
+	 * Test ID: 118
+	 * Date Tested: 27.04.2018
+	 * Test Result: FAIL
+	 */	
+	public void testSetSubjectNullPassed() {
+		populatedEmail.setSubject(null);
+		assertEquals(null, populatedEmail.subjectLine());
 	}
 	
 	
@@ -268,7 +285,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: setMessage()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 109
+	 * Test ID: 119
 	 * Date Tested: 26.04.2018
 	 * Test Result: FAIL
 	 * Notes: Checks value String body is set in the object to the constant used
@@ -286,7 +303,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: setMessage()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 110
+	 * Test ID: 120
 	 * Date Tested: 26.04.2018
 	 * Test Result: FAIL
 	 * Notes: Checks value String emailBody is an empty string using the constant defined
@@ -304,7 +321,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: isValid()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 111
+	 * Test ID: 121
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when all attributes are not set
@@ -318,7 +335,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: isValid()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 112
+	 * Test ID: 122
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when all attributes are set
@@ -330,7 +347,7 @@ public class CompanyEmail_UnitTests {
 	@Test
 	/* Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 113
+	 * Test ID: 123
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when only one attribute is set
@@ -345,7 +362,7 @@ public class CompanyEmail_UnitTests {
 	@Test
 	/* Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 114
+	 * Test ID: 124
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when only one attribute is set
@@ -359,7 +376,7 @@ public class CompanyEmail_UnitTests {
 	@Test
 	/* Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 115
+	 * Test ID: 125
 	 * Date Tested: 26.04.2018	
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when only one attribute is set
@@ -373,7 +390,7 @@ public class CompanyEmail_UnitTests {
 	@Test
 	/* Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 116
+	 * Test ID: 126
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when only one attribute is set
@@ -389,7 +406,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: toString()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 117
+	 * Test ID: 127
 	 * Date Tested: PASS
 	 * Test Result: 26.04.2018
 	 * Notes: Checks toString method returns value is of type string
@@ -404,7 +421,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: toString()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 118
+	 * Test ID: 128
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks toString method returns correct String 
@@ -421,7 +438,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: toString()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 119
+	 * Test ID: 129
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks toString method returns correct String 
@@ -438,7 +455,7 @@ public class CompanyEmail_UnitTests {
 	 * Testing: toString()
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 120
+	 * Test ID: 130
 	 * Date Tested: 26.04.2018
 	 * Test Result: FAIL
 	 * Notes: Checks toString method returns correct String 
