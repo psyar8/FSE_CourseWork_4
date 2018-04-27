@@ -31,7 +31,9 @@ public class CompanyEmail {
     public String subjectLine() {
         return subjectLine;
     }
+    
     /*
+     * Change Impact: emailMessage()
      * ChangeID: CHG001
      * Author: Aidan Reed
      * Date: 27.04.2018
@@ -70,9 +72,17 @@ public class CompanyEmail {
         if (emailMessage == null) isComplete = false;
         return isComplete;
     }
-    
+  
+    /*
+     * Change Impact: toString()
+     * ChangeID: CHG002
+     * Author: Aidan Reed
+     * Date: 27.04.2018
+     * Notes: Added check to see if subject line is null
+     * 		  prevents null exception
+     */
     public String toString() {
-    	if (subjectLine.equals("")) {
+    	if (subjectLine.equals("") || subjectLine == null) {
     		return "[no subject]";
     	} else {
     		return subjectLine;
