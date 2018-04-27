@@ -31,7 +31,13 @@ public class CompanyEmail {
     public String subjectLine() {
         return subjectLine;
     }
-    
+    /*
+     * ChangeID: CHG001
+     * Author: Aidan Reed
+     * Date: 27.04.2018
+     * Notes: Removed return emailMessage() Call and replaced with
+     * 		  return emailMessage;
+     */
     public String emailMessage() {
         return emailMessage();
     }
