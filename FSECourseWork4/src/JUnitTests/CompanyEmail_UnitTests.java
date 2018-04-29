@@ -17,7 +17,6 @@ public class CompanyEmail_UnitTests {
 	final String kBADEMAIL2 = "joe.@bloggs";
 	final String kBADEMAIL3 = "joe.bloggs@gmail@.com";
 	final String kBADEMAIL4 = "@joe.bloggs@gmail.com";
-
 	final String kSUBJECT = "RE: Lorem ipsum";
 	final String kBODY1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 	final String kBODY2 = "This is a test email for using unit testing";
