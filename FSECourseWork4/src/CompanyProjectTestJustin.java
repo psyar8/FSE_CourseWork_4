@@ -22,6 +22,29 @@ public class CompanyProjectTestJustin {
 	/*
 	 * Author: Justin Ng
 	 * Co-Author: Christian Stubbs
+	 * Test ID: 201
+	 * Date Tested: 27.04.2018
+	 * Test Result: FAIL
+	 * Notes: Checks that the default constructor is created correctly and that array lists are initialised
+	 */
+	public void testDefaultConstructor() {
+		assertEquals(1, CompanyEmailSystem.GlobalProjectCounter);
+		/* Checks that the GlobalProjectCounter is incremented in PID - JN: 27.04.18 */
+		assertEquals(1, newCompanyProject.getPID());
+		assertEquals("New Project", newCompanyProject.getPTitle());
+		assertTrue(newCompanyProject.getProjectContacts().isEmpty());
+		/* Check project phase id is 0 - error if not - reason - it should start from 0 */
+		assertEquals(0, newCompanyProject.getPhaseByID());
+		//newCompanyProject.addEmail(newCompanyEmail);
+		assertEquals(0, newCompanyProject.getEmailsForPhase().size());
+	}
+	
+	
+	
+	@Test
+	/*
+	 * Author: Justin Ng
+	 * Co-Author: Christian Stubbs
 	 * Test ID: 203.1
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
