@@ -88,7 +88,7 @@ public class CompanyProject {
      * Notes: Change check for ProjectPhases length to lenght -1 and moved ProjectPhase incrementor inside else statement
      */
     public boolean nextPhase() {
-        if (ProjectPhase > (CompanyEmailSystem.ProjectPhases.length - 1)) {
+        if (ProjectPhase >= (CompanyEmailSystem.ProjectPhases.length - 1)) {
             return false;
         } else {
         	ProjectPhase++;
