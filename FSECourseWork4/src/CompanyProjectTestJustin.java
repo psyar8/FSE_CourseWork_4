@@ -12,7 +12,7 @@ import org.junit.Test;
 public class CompanyProjectTestJustin {
 
 	static CompanyProject newCompanyProject;
-	/* @BeforeClass is run before each and every test to ensure a new project is made every time when necessary - JN: 25.04.18 */
+	/* @BeforeClass is run before tests to ensure a new project is made - JN: 25.04.18 */
 	@BeforeClass
 	public static void setUp() {
 		newCompanyProject = new CompanyProject();
@@ -39,7 +39,27 @@ public class CompanyProjectTestJustin {
 		assertEquals(0, newCompanyProject.getEmailsForPhase().size());
 	}
 	
-	
+	@Test
+	/*
+	 * Author: Justin Ng
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 202
+	 * Date Tested: 30.04.2018
+	 * Test Result: FAIL
+	 * Notes: Checks that the main constructor is created correctly and that the title is read
+	 */
+	public void testMainConstructor() {
+		CompanyProject newCompanyProject_MainConstruct;
+		newCompanyProject_MainConstruct = new CompanyProject("TestOneTitle");
+		assertEquals(2, CompanyEmailSystem.GlobalProjectCounter);
+		/* Checks that the GlobalProjectCounter is incremented in PID - JN: 30.04.18 */
+		assertEquals(2, newCompanyProject_MainConstruct.getPID());
+		assertEquals("TestOneTitle", newCompanyProject_MainConstruct.getPTitle());
+		assertTrue(newCompanyProject_MainConstruct.getProjectContacts().isEmpty());
+		/* Check project phase id is 0 - error if not - reason - it should start from 0 */
+		assertEquals(0, newCompanyProject_MainConstruct.getPhaseByID());
+		assertEquals(0, newCompanyProject_MainConstruct.getEmailsForPhase().size());
+	}
 	
 	@Test
 	/*
@@ -61,10 +81,9 @@ public class CompanyProjectTestJustin {
 	 * Test ID: 203.2
 	 * Date Tested: 27.04.2018
 	 * Test Result: PASS
-	 * Notes: Checks that PID increments correctly after two more projects are made
+	 * Notes: Checks that PID increments correctly after a new project is made
 	 */
 	public void testGetPID_SecondStage() {
-		setUp();
 		setUp();
 		assertEquals(3, newCompanyProject.getPID());
 	}
@@ -131,6 +150,7 @@ public class CompanyProjectTestJustin {
 	 * Test ID: 206.2
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
+	 * Notes: Checks if a contact can be created and read back
 	 */
 	public void testIsContact_SecondStage() {
 		/* Add a new contact to check if it can be read back - JN: 25.04.18 */
@@ -145,6 +165,7 @@ public class CompanyProjectTestJustin {
 	 * Test ID: 207.1
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
+	 * Notes: Checks if multiple contacts can be created and read back
 	 */
 	public void testAddContact() {
 		/* Add two new contacts to check if they can be read back - JN: 25.04.18 */
@@ -153,5 +174,4 @@ public class CompanyProjectTestJustin {
 		assertTrue(newCompanyProject.isContact("raiu9s@gmail.com"));
 		assertTrue(newCompanyProject.isContact("q39ikdf@outlook.com"));
 	}
-
 }
