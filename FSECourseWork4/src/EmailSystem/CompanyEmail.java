@@ -55,6 +55,13 @@ public class CompanyEmail {
      * Date: 27.04.2018
      * Notes: Added method call to emailParser to validate email
      */
+    /*
+     * Change Impact: setFrom()
+     * ChangeID: CHG003
+     * Author: Athullya Roy
+     * Date: 02.05.2018
+     * Notes: Changed the return value from void to Boolean
+     */
     public Boolean setFrom(String fromAddr) {
         if (emailParser(fromAddr)) {
             fromAddress = fromAddr;
@@ -69,6 +76,13 @@ public class CompanyEmail {
      * Author: Aidan Reed
      * Date: 27.04.2018
      * Notes: Added method call to emailParser to validate email
+     */
+    /*
+     * Change Impact: setTo()
+     * ChangeID: CHG003
+     * Author: Athullya Roy
+     * Date: 02.05.2018
+     * Notes: Changed the return value from void to Boolean
      */
     public Boolean setTo(String toAddr) {
     	if(emailParser(toAddr)) {
