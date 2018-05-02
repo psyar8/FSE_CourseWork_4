@@ -8,21 +8,34 @@ public class CompanyProject {
     private int ProjectPhase;
     private ArrayList[] ProjectEmails = new ArrayList[6];
     
+    /*
+     * Change Impact: CompanyProject()
+     * ChangeID: CHGE001
+     * Author: Justin Ng
+     * Date: 02.05.2018
+     * Notes: Changed ProjectPhase = 1 to ProjectPhase = 0
+     */
     public CompanyProject() {
         CompanyEmailSystem.GlobalProjectCounter++;
         PID = CompanyEmailSystem.GlobalProjectCounter;
         PTitle = "New Project";
         ProjectContacts = new ArrayList<String>();
-        ProjectPhase = 1;
+        ProjectPhase = 0;
         ProjectEmails[ProjectPhase] = new ArrayList<CompanyEmail>();
     }
-    
+    /*
+     * Change Impact: CompanyProject(String pTitle)
+     * ChangeID: CHGE001
+     * Author: Justin Ng
+     * Date: 02.05.2018
+     * Notes: Changed ProjectPhase = 1 to ProjectPhase = 0
+     */
     public CompanyProject(String pTitle) {
     	CompanyEmailSystem.GlobalProjectCounter++;
         PID = CompanyEmailSystem.GlobalProjectCounter;
         PTitle = pTitle;
         ProjectContacts = new ArrayList<String>();
-        ProjectPhase = 1;
+        ProjectPhase = 0;
         ProjectEmails[ProjectPhase] = new ArrayList<CompanyEmail>();
     }
     
@@ -67,11 +80,18 @@ public class CompanyProject {
         return ProjectEmails[thePhase];
     }
     
+    /*
+     * Change Impact: nextPhase()
+     * ChangeID: CHGE002
+     * Author: Justin Ng
+     * Date: 02.05.2018
+     * Notes: Change check for ProjectPhases length to lenght -1 and moved ProjectPhase incrementor inside else statement
+     */
     public boolean nextPhase() {
-        ProjectPhase++;
-        if (ProjectPhase > CompanyEmailSystem.ProjectPhases.length) {
+        if (ProjectPhase > (CompanyEmailSystem.ProjectPhases.length - 1)) {
             return false;
         } else {
+        	ProjectPhase++;
             return true;
         }
     }
