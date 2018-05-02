@@ -55,10 +55,12 @@ public class CompanyEmail {
      * Date: 27.04.2018
      * Notes: Added method call to emailParser to validate email
      */
-    public void setFrom(String fromAddr) {
+    public Boolean setFrom(String fromAddr) {
         if (emailParser(fromAddr)) {
             fromAddress = fromAddr;
+            return true;
         }
+        else return false;
     }
     
     /*
@@ -68,10 +70,12 @@ public class CompanyEmail {
      * Date: 27.04.2018
      * Notes: Added method call to emailParser to validate email
      */
-    public void setTo(String toAddr) {
+    public Boolean setTo(String toAddr) {
     	if(emailParser(toAddr)) {
     		toAddress = toAddr;
-    	}
+    		return true;
+        }
+        else return false;
     }
     
     /*

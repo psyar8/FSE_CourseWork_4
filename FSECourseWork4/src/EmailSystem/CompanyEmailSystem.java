@@ -1,3 +1,5 @@
+package EmailSystem;
+
 import java.util.*;
 
 public class CompanyEmailSystem {
