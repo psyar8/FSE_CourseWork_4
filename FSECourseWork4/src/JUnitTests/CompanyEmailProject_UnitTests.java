@@ -80,7 +80,7 @@ public class CompanyEmailProject_UnitTests {
 		assertEquals(3, companyProjectThird_Complete.getPID());
 		
 		assertEquals(kPTITLE1, companyProjectThird_Complete.getPTitle());
-		assertTrue(companyProjectThird_Complete.getProjectContacts().isEmpty());
+		assertFalse(companyProjectThird_Complete.getProjectContacts().isEmpty());
 		
 		assertEquals(0, companyProjectThird_Complete.getPhaseByID());
 		assertEquals(0, companyProjectThird_Complete.getEmailsForPhase().size());
