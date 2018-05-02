@@ -66,6 +66,25 @@ public class CompanyEmailProject_UnitTests {
 		assertEquals(0, companyProjectFirst_Empty.getEmailsForPhase().size());
 	}
 	
+	@Test
+	/*
+	 * Author: Justin Ng
+	 * Co-Author: Christian Stubbs
+	 * Test ID: 202
+	 * Date Tested: 30.04.2018
+	 * Test Result: FAIL
+	 * Notes: Checks that the main constructor is created correctly and that the title is read
+	 */
+	public void testMainConstructor() {
+		/* Checks that the GlobalProjectCounter is incremented in PID - JN: 30.04.18 */
+		assertEquals(3, companyProjectThird_Complete.getPID());
+		
+		assertEquals(kPTITLE1, companyProjectThird_Complete.getPTitle());
+		assertTrue(companyProjectThird_Complete.getProjectContacts().isEmpty());
+		
+		assertEquals(0, companyProjectThird_Complete.getPhaseByID());
+		assertEquals(0, companyProjectThird_Complete.getEmailsForPhase().size());
+	}
 
 	@Test
 	/*
