@@ -121,7 +121,7 @@ public class CompanyEmail {
      * 		  prevents null exception
      */
     public String toString() {
-    	if (subjectLine.equals("") || subjectLine == null) {
+    	if (subjectLine == null || subjectLine.equals("")) {
     		return "[no subject]";
     	} else {
     		return subjectLine;
