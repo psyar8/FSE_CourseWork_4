@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class CompanyProjectTestChris {
 	static CompanyProject newCompanyProject;
-	static CompanyProject newCompanyProject5Email;
+	static CompanyProject newCompanyProject1000Email;
 	static CompanyProject newCompanyProject1Email;
 	static CompanyEmail newcompemail;
 
@@ -14,7 +14,7 @@ public class CompanyProjectTestChris {
 	@BeforeClass
 	public static void setUp() {
 		newCompanyProject = new CompanyProject();
-		newCompanyProject5Email = new CompanyProject();
+		newCompanyProject1000Email = new CompanyProject();
 		newCompanyProject1Email = new CompanyProject();
 		newcompemail = new CompanyEmail("m@me.co.uk","to@me.co.uk","Subject!","This is a email");		
 		
@@ -24,7 +24,7 @@ public class CompanyProjectTestChris {
 			String toAddr = "" + i + i + "@me.co.uk";
 			String subject = "" + i + "subject";
 			String body = "This is a body message";
-			newCompanyProject5Email.addEmail(new CompanyEmail(fromAddr, toAddr, subject, body));
+			newCompanyProject1000Email.addEmail(new CompanyEmail(fromAddr, toAddr, subject, body));
 		}
         
 	}
@@ -35,8 +35,8 @@ public class CompanyProjectTestChris {
 		 * Co-author: Justin Ng
 		 * Test ID: 208
 		 * Date Tested: 27.04.2018
-		 * Test Result: FAIL
-		 * Notes: pass depends upon Company Email.isValid method. Not yet fixable
+		 * Test Result: PASS
+		 * Notes:
 		 */
 		assertTrue(newcompemail.isValid());
 		if (!newcompemail.isValid())
@@ -53,11 +53,12 @@ public class CompanyProjectTestChris {
 		 * Co-author: Justin Ng
 		 * Test ID: 209
 		 * Date Tested: 27.04.2018
-		 * Test Result: Pass
+		 * Test Result: FAIL
 		 * Notes: checks if the number of emails is the same size as the array (0)
 		 */
+		
 		assertEquals(0, newCompanyProject.getEmailsForPhase().size());
-		System.out.println(newCompanyProject.getEmailsForPhase());
+		System.out.println(newCompanyProject.getEmailsForPhase().size());
 
 		
 	}
@@ -89,14 +90,15 @@ public class CompanyProjectTestChris {
 		 * Notes: checks the email in array is same as number of emails in relevant phase, 
 		 * then advances the phase and repeats previous process. 
 		 * Fails due to predicted bug in nextPhase() 		 */
-		assertEquals(1000, newCompanyProject5Email.getEmailsForPhase().size());	
-		System.out.println(newCompanyProject5Email.getEmailsForPhase());
-		newCompanyProject5Email.nextPhase();	
-		System.out.println(newCompanyProject5Email.getEmailsForPhase());
 		
-		newCompanyProject5Email.addEmail(newcompemail);
-		System.out.println(newCompanyProject5Email.getEmailsForPhase());
-
+		System.out.println(newCompanyProject1000Email.getEmailsForPhase());
+		
+		newCompanyProject1000Email.nextPhase();	
+		newCompanyProject1000Email.addEmail(newcompemail);
+		
+		System.out.println(newCompanyProject1000Email.getEmailsForPhase());
+		
+		assertEquals(1000, newCompanyProject1000Email.getEmailsForPhase().size());	
 		
 	}
 	@Test
@@ -113,19 +115,17 @@ public class CompanyProjectTestChris {
 		*/
 		
 		
+
+		newCompanyProject1000Email.nextPhase();	
+		newCompanyProject1000Email.nextPhase();	
+		newCompanyProject1000Email.nextPhase();	
+		newCompanyProject1000Email.nextPhase();	
+		newCompanyProject1000Email.nextPhase();	
 		
-		System.out.println(newCompanyProject5Email.getEmailsForPhase());
-		newCompanyProject5Email.nextPhase();	
-		newCompanyProject5Email.nextPhase();	
-		newCompanyProject5Email.nextPhase();	
-		newCompanyProject5Email.nextPhase();	
-		newCompanyProject5Email.nextPhase();	
 		
-		System.out.println(newCompanyProject5Email.getEmailsForPhase());
-		
-		newCompanyProject5Email.addEmail(newcompemail);
-		System.out.println(newCompanyProject5Email.getEmailsForPhase()); 
-		assertEquals(1000, newCompanyProject5Email.getEmailsForPhase().size());	
+		newCompanyProject1000Email.addEmail(newcompemail);
+		System.out.println(newCompanyProject1000Email.getEmailsForPhase()); 
+		assertEquals(1000, newCompanyProject1000Email.getEmailsForPhase().size());	
 	}
 	@Test
 	public void ArrayListGetEmailsforChosenPhase1() {
@@ -200,7 +200,7 @@ public class CompanyProjectTestChris {
 	 * Notes: advances the phase to the last phase. Checks if the phase is equal to 5 (last phase). 
 	 *  Fail due to phase starting at '1' and not 0 as it should. Furthermore, fails due to Arraylist not being created (bug)
 		*/	  
-		for (int i = 0; i <6; i++) {
+		for (int i = 0; i <5; i++) {
 			newCompanyProject.nextPhase();
 		}
 		assertEquals(5, newCompanyProject.getPhaseByID());
