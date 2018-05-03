@@ -45,9 +45,9 @@ In a similar way, we have unique ID's for all the bugs we found in the Java prog
 
 As a team, we have logged all the bugs which we identified in the program. The change ID has been formatted in the following way:
 
-* CHGNE100 LEVEL = CompanyEmail
-* CHGNE200 LEVEL = CompanyProject
-* CHGNE300 LEVEL = CompanyEmailSystem
+* CHGNE100 level = CompanyEmail
+* CHGNE200 level = CompanyProject
+* CHGNE300 level = CompanyEmailSystem
 
 Authors
 --------
