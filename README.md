@@ -1,13 +1,33 @@
 # FSE_CourseWork_4
-Introduction - what it is 
+
+In this project we have developed JUnit tests for the code provided for the 3 classes- CompanyEmail, CompanyProject, and CompanyEmailSystem. We have build the tests based on the test plan that we previously created. We have documented the tests that we carried out and have stated whether the tests we performed have passed or failed. If a test has failed, we edited the code so that the test could pass. This is documented as change table in CompanyEmail.doc. 
+
+### The folder contains the following files:
+1. CompanyEmail.doc
+1. CompanyEmail.java
+1. CompanyEmail_UnitTests.java
+1. ComapanyEmailProject.doc
+1. ComapanyEmailProject.java
+1. ComapanyEmailProject_UnitTests.java
+1. CompanyEmailSystem.doc
+1. CompanyEmailSystem.java
+1. CompanyEmailSystem_UnitTests.java
 
 Structure of Project
-Where the edited code is
-Where the unit tests are 
+---------------------
+### Comment structure
+We have commented our JUnit tests in the following format.
+    
+	/* 
+	 * Testing: functionName()
+	 * Author: Author Name
+	 * Co-Author: Co-Author Name
+	 * Test ID: Test ID (see test table)
+	 * Date Tested: Date
+	 * Test Result: PASS/FAIL
+	 */
 
-Comment structure
-
-Test Naming Structure
+###Test Naming Structure
 
 Test Naming Convention
 100 level = email
@@ -20,3 +40,14 @@ BUG200 LEVEL...
 
 ChangeNaming structure
 CHGNE100 LEVEL = EMAIL
+
+
+Authors
+--------
+
+* Aidan Reed
+* Ram Raja
+* Christian Stubbs
+* Justin Ng
+* Athullya Roy
+
