@@ -125,7 +125,7 @@ public class CompanyEmailSystem {
         System.out.println("What is the title of the project?");
         in.nextLine(); // to remove read-in bug
         String title = in.nextLine();
-        /* Fixing no title bug CHGE3004 */
+        /* Fixing no title bug CHGE304 */
         if (title.length() < 10) {
         	AllProjects.add(new CompanyProject());
         } else {
@@ -160,8 +160,19 @@ public class CompanyEmailSystem {
         }
     }
     
+    
+    
+    /*
+     * Change Impact: ListProject
+     * ChangeID: CHGE304	
+     * Author: Christian Stubbs
+     * Date: 03.05.2018
+     * Notes: Condition for loop operator changed to <= as first and last phase 
+     * 		  were cut out.
+     */
     public static void ListPhases() {
         CompanyProject cp = AllProjects.get(currentProjShowing);
+        /* CHGE305 Operator changed from < to <= */
         for (int x=0; x < cp.getPhaseByID(); x++ ) {
             System.out.println((x+1)+") "+cp.getPhaseByName()+" - "+cp.getEmailsForPhase(x).size()+" Emails");
         }
