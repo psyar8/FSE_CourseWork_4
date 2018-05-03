@@ -35,13 +35,21 @@ We have a unique ID for all the tests that we carried out. In the documents we h
 * 200 level = CompanyProject
 * 300 level = CompanyEmailSystem
 
-### Bug Naming Structure
-BUG100 LEVEL = EMAIL
-BUG200 LEVEL... 
+### Bug Naming Convention
 
-ChangeNaming structure
-CHGNE100 LEVEL = EMAIL
+In a similar way, we have unique ID's for all the bugs we found in the Java programs. This is logged in the bug table. 
 
+* BUG100 level = CompanyEmail
+* BUG200 level = CompanyProject
+* BUG300 level = CompanyEmailSystem
+
+### Change Naming Convention
+
+As a team, we have logged all the bugs which we identified in the program. The change ID has been formatted in the following way:
+
+* CHGNE100 LEVEL = CompanyEmail
+* CHGNE200 LEVEL = CompanyProject
+* CHGNE300 LEVEL = CompanyEmailSystem
 
 Authors
 --------
