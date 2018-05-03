@@ -15,11 +15,7 @@ In this project we have developed JUnit tests for the code provided for the 3 cl
 
 Structure of Project
 ---------------------
-
-Where the edited code is
-Where the unit tests are 
-
-Comment structure
+### Comment structure
 
 Test Naming Structure
 
@@ -34,3 +30,14 @@ BUG200 LEVEL...
 
 ChangeNaming structure
 CHGNE100 LEVEL = EMAIL
+
+
+Authors
+--------
+
+Aidan Reed
+Ram Raja
+Christian Stubbs
+Justin Ng
+Athullya Roy
+
