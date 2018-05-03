@@ -17,6 +17,7 @@ Structure of Project
 ---------------------
 ### Comment structure
 We have commented our JUnit tests in the following format.
+    
 	/* 
 	 * Testing: functionName()
 	 * Author: Author Name
