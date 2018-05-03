@@ -13,9 +13,11 @@ public class CompanyEmailSystem {
     /*
      * Change Impact: Main Method
      * ChangeID: CHGE308
-     * Author: Ram Raja
-     * Date: 03.05.2018
-     * Notes: Removed "-1" being applied to project selection.
+     * Author: Aidan Reed
+     * Date: 03/05/2018
+     * Notes: Initial state of currentProjShowing set to -1 
+     * 		  Menu logic has been changed to reflect this
+     * 		  Lines 75, 101, 112 Changed
      */
     /*
      * Change Impact: Main Method
@@ -70,6 +72,7 @@ public class CompanyEmailSystem {
         while (in.hasNextLine()){
             String s = in.next();
             try{
+            	/*CHGE308 Changed to -1*/
                 if(currentProjShowing == -1) {
                     if (s.equals("P")) {
                         ListProjects();
@@ -79,7 +82,7 @@ public class CompanyEmailSystem {
                         System.out.println("Goodbye!");
                         break;
                     } else if (Integer.parseInt(s) > 0 && Integer.parseInt(s) <= AllProjects.size()) { //Added bounds, see CHGE309
-                        currentProjShowing = Integer.parseInt(s) - 1; //Removed "-1", see CHGE308
+                    	currentProjShowing = Integer.parseInt(s) - 1; 
                     } else {
                         System.out.println("Command not recognised");
                     }
@@ -95,6 +98,7 @@ public class CompanyEmailSystem {
                     } else if (s.equals("N")) {
                         ChangeProjectPhase();
                     } else if (s.equals("X")) {
+                    	/*CHGE308 Changed to -1*/
                         currentProjShowing = -1;
                     } else if (Integer.parseInt(s) != -1 ) {
                         ListEmails(Integer.parseInt(s) - 1);
@@ -105,6 +109,7 @@ public class CompanyEmailSystem {
             } catch (Exception e) {
                 System.out.println("Something went wrong: " + e.toString() + "\n");
             }
+            /*CHGE308 Changed to -1*/
             if(currentProjShowing == -1) {
                 System.out.println("What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software");
             } else {
