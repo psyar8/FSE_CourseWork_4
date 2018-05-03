@@ -10,7 +10,7 @@ public class CompanyProject {
     
     /*
      * Change Impact: CompanyProject()
-     * ChangeID: CHGE001
+     * ChangeID: CHGE201
      * Author: Justin Ng
      * Date: 02.05.2018
      * Notes: Changed ProjectPhase = 1 to ProjectPhase = 0
@@ -25,7 +25,7 @@ public class CompanyProject {
     }
     /*
      * Change Impact: CompanyProject(String pTitle)
-     * ChangeID: CHGE001
+     * ChangeID: CHGE201
      * Author: Justin Ng
      * Date: 02.05.2018
      * Notes: Changed ProjectPhase = 1 to ProjectPhase = 0
@@ -82,16 +82,24 @@ public class CompanyProject {
     
     /*
      * Change Impact: nextPhase()
-     * ChangeID: CHGE002
+     * ChangeID: CHGE202
      * Author: Justin Ng
      * Date: 02.05.2018
      * Notes: Change check for ProjectPhases length to lenght -1 and moved ProjectPhase incrementor inside else statement
+     */
+    /*
+     * Change Impact: nextPhase()
+     * ChangeID: CHGE203
+     * Author: Justin Ng
+     * Date: 03.05.2018
+     * Notes: Initialise array list for next project phase
      */
     public boolean nextPhase() {
         if (ProjectPhase >= (CompanyEmailSystem.ProjectPhases.length - 1)) {
             return false;
         } else {
         	ProjectPhase++;
+        	ProjectEmails[ProjectPhase] = new ArrayList<CompanyEmail>();
             return true;
         }
     }
