@@ -108,6 +108,24 @@ public class CompanyProject {
         return CompanyEmailSystem.ProjectPhases[ProjectPhase];
     }
     
+    /*
+     * Change Impact: getPhaseByName
+     * ChangeID: CHGE303
+     * Author: Aidan Reed
+     * Date: 03/05/2018
+     * Notes: Overloaded Version that takes an integer to access 
+     * 		  Each stage of project - prevents getting to stage past
+     * 		  Current stage
+     */
+    public String getPhaseByName(int phaseID) {
+    	if (phaseID < ProjectPhase) {
+    		return CompanyEmailSystem.ProjectPhases[phaseID];
+    	}
+        return getPhaseByName();
+    }
+    
+    
+    
     public int getPhaseByID() {
         return ProjectPhase;
     }
