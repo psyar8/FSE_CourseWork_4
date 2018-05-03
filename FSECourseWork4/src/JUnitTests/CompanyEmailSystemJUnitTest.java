@@ -52,7 +52,6 @@ public class CompanyEmailSystemJUnitTest {
 		System.setIn(null);
 	}
 	
-	
 	@Test
 	/* 
 	 * Testing: Default Menu Output
@@ -67,7 +66,7 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testMenuOptions_OnStartUp() {
 		CompanyEmailSystem.main(null);
-		String expectedOutput = "What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it";
+		String expectedOutput = "What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r";
 		assertEquals(expectedOutput + "\n", outContent.toString());	
 	}
 	
@@ -325,6 +324,122 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.ListEmails(20000);
 		String expectedOutput = "Error: Unknown Phase\n";
 		assertEquals(expectedOutput, outContent.toString());	
+	}
+	@Test
+	/* 
+	 * Testing: Project Menu Display Upon Selection 
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 316
+	 * Date Tested: 03/05/2018 
+	 * Test Result: PASS
+	 * Notes: When main loads, user is presented with a menu.
+	 * 		  When selecting project number, in this case "2",
+	 * 		  system should display the project menu list.
+	 * 
+	 */
+	public void testMenuOptions_Projcets() {
+		sysInput = "2";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		String expectedOutput = "What do you want to do?\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
+				"What do you want to do?\n" + 
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\r";
+		assertEquals(expectedOutput + "\n", outContent.toString());
+	}
+	
+	@Test
+	/* 
+	 * Testing: Project Menu Display Upon Selection 
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 317
+	 * Date Tested: 03/05/2018 
+	 * Test Result: FAIL
+	 * Notes: When main loads, user is presented with a menu.
+	 * 		  When selecting project number, in this case "2",
+	 * 		  system should display the project menu list.
+	 * 
+	 */
+	public void testInvalidProjectAccessibility() {
+		String expectedOutput = "What do you want to do?\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
+				"Command not recognised\r\n" + 
+				"What do you want to do?\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\r";
+		
+		sysInput = "-1";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		outContent.reset();
+		
+		sysInput = "-7";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		outContent.reset();
+		
+		sysInput = "7";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		outContent.reset();
+
+		sysInput = "99";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		outContent.reset();
+
+	}
+	
+	@Test
+	/* 
+	 * Testing: Project Menu Display Upon Selection 
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 318
+	 * Date Tested: 03/05/2018 
+	 * Test Result: FAIL
+	 * Notes: When main loads, user is presented with a menu.
+	 * 		  When selecting project number, in this case "2",
+	 * 		  system should display the project menu list.
+	 * 
+	 */
+	public void testValidProjectAccessibility() {
+		String expectedOutput = "What do you want to do?\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
+				"What do you want to do?\n" + 
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\r";
+		
+		sysInput = "1";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		outContent.reset();
+		
+		sysInput = "2";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		outContent.reset();
+		
+		sysInput = "3";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		outContent.reset();
+
 	}
 	
 }
