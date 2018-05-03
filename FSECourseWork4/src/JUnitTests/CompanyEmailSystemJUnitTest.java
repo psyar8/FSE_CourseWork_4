@@ -217,7 +217,7 @@ public class CompanyEmailSystemJUnitTest {
 		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
-		
+		CompanyEmailSystem.currentProjShowing = 0;
 		for (int i = 0; i < 10000 ; i++) {
 			sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
 			inScan = new Scanner(sysInput);
@@ -387,7 +387,7 @@ public class CompanyEmailSystemJUnitTest {
 		sysInput = "\n" +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
-		
+		CompanyEmailSystem.currentProjShowing = 0;
 		/* Adding some emails to the initial stage */
 		for (int i = 0; i < 5 ; i++) {
 				sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
