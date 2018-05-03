@@ -1,14 +1,14 @@
 # FSE_CourseWork_4
 The folder contains the following files:
-1.CompanyEmail.doc
-1.CompanyEmail.java
-1.CompanyEmail_UnitTests.java
-1.ComapanyEmailProject.doc
-1.ComapanyEmailProject.java
-1.ComapanyEmailProject_UnitTests.java
-1.CompanyEmailSystem.doc
-1.CompanyEmailSystem.java
-1.CompanyEmailSystem_UnitTests.java
+1. CompanyEmail.doc
+1. CompanyEmail.java
+1. CompanyEmail_UnitTests.java
+1. ComapanyEmailProject.doc
+1. ComapanyEmailProject.java
+1. ComapanyEmailProject_UnitTests.java
+1. CompanyEmailSystem.doc
+1. CompanyEmailSystem.java
+1. CompanyEmailSystem_UnitTests.java
 
 
 
