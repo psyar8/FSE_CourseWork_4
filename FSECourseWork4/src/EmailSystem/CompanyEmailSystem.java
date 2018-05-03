@@ -98,11 +98,18 @@ public class CompanyEmailSystem {
         
     }
     
+    /*
+     * Change Impact: ListProjec
+     * ChangeID: CHGE303	
+     * Author: Christian Stubbs
+     * Date: 03.05.2018
+     * Notes: Add additional space into string
+     */
     public static void ListProjects(){
         for (int x = 0; x < AllProjects.size(); x++) {
             CompanyProject cp = AllProjects.get(x);
             int emailCount = cp.getEmailsForPhase().size();
-            System.out.println((x+1) + ") " + cp.toString() + " - " + emailCount + "emails");
+            System.out.println((x+1) + ") " + cp.toString() + " - " + emailCount + " emails");
         }
     }
     
