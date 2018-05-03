@@ -99,7 +99,7 @@ public class CompanyEmailSystem {
     }
     
     /*
-     * Change Impact: ListProjec
+     * Change Impact: ListProject
      * ChangeID: CHGE303	
      * Author: Christian Stubbs
      * Date: 03.05.2018
@@ -113,11 +113,25 @@ public class CompanyEmailSystem {
         }
     }
     
+    
+    /*
+     * Change Impact: ListProject
+     * ChangeID: CHGE304	
+     * Author: Christian Stubbs
+     * Date: 03.05.2018
+     * Notes: Condition added to check length of title provided.
+     */
     public static void AddProject(Scanner in) {
         System.out.println("What is the title of the project?");
         in.nextLine(); // to remove read-in bug
         String title = in.nextLine();
-        AllProjects.add(new CompanyProject(title));
+        /* Fixing no title bug CHGE3004 */
+        if (title.length() < 10) {
+        	AllProjects.add(new CompanyProject());
+        } else {
+        	AllProjects.add(new CompanyProject(title));
+        }
+       
         System.out.println("[Project added]");
     }
     
