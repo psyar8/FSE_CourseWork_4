@@ -17,6 +17,16 @@ public class CompanyEmailSystem {
      * Date: 03.05.2018
      * Notes: Removed "-1" being applied to project selection.
      */
+    /*
+     * Change Impact: Main Method
+     * ChangeID: CHGE309
+     * Author: Ram Raja
+     * Date: 03.05.2018
+     * Notes: Added bounds to project selection.
+     *        Projects can only be selected if the user input is
+     *        above 0 and below/equal to size of ArrayList.
+     */
+    
     public static void main(String[] args) {
         
         ///////
@@ -68,7 +78,7 @@ public class CompanyEmailSystem {
                     } else if (s.equals("X")) {
                         System.out.println("Goodbye!");
                         break;
-                    } else if (Integer.parseInt(s) != -1 ) {
+                    } else if (Integer.parseInt(s) > 0 && Integer.parseInt(s) <= AllProjects.size()) { //Added bounds, see CHGE309
                         currentProjShowing = Integer.parseInt(s); //Removed "-1", see CHGE308
                     } else {
                         System.out.println("Command not recognised");
