@@ -8,7 +8,7 @@ public class CompanyEmailSystem {
 	public static String[] ProjectPhases = new String[]{"Feasibility","Design","Implementation","Testing","Deployment","Completed"};
 	
     public static ArrayList<CompanyProject> AllProjects;
-    public static int currentProjShowing;
+    public static int currentProjShowing = -1;
     
     /*
      * Change Impact: Main Method
@@ -70,7 +70,7 @@ public class CompanyEmailSystem {
         while (in.hasNextLine()){
             String s = in.next();
             try{
-                if(currentProjShowing == 0) {
+                if(currentProjShowing == -1) {
                     if (s.equals("P")) {
                         ListProjects();
                     } else if (s.equals("A")) {
@@ -79,7 +79,7 @@ public class CompanyEmailSystem {
                         System.out.println("Goodbye!");
                         break;
                     } else if (Integer.parseInt(s) > 0 && Integer.parseInt(s) <= AllProjects.size()) { //Added bounds, see CHGE309
-                        currentProjShowing = Integer.parseInt(s); //Removed "-1", see CHGE308
+                        currentProjShowing = Integer.parseInt(s) - 1; //Removed "-1", see CHGE308
                     } else {
                         System.out.println("Command not recognised");
                     }
@@ -95,9 +95,9 @@ public class CompanyEmailSystem {
                     } else if (s.equals("N")) {
                         ChangeProjectPhase();
                     } else if (s.equals("X")) {
-                        currentProjShowing = 0;
+                        currentProjShowing = -1;
                     } else if (Integer.parseInt(s) != -1 ) {
-                        ListEmails(Integer.parseInt(s));
+                        ListEmails(Integer.parseInt(s) - 1);
                     } else {
                         System.out.println("Command not recognised");
                     }
@@ -105,7 +105,7 @@ public class CompanyEmailSystem {
             } catch (Exception e) {
                 System.out.println("Something went wrong: " + e.toString() + "\n");
             }
-            if(currentProjShowing == 0) {
+            if(currentProjShowing == -1) {
                 System.out.println("What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software");
             } else {
                 System.out.println("What do you want to do?\n L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project");
