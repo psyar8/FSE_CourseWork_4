@@ -110,7 +110,7 @@ public class CompanyProject {
     
     /*
      * Change Impact: getPhaseByName
-     * ChangeID: CHGE303
+     * ChangeID: CHGE306
      * Author: Aidan Reed
      * Date: 03/05/2018
      * Notes: Overloaded Version that takes an integer to access 

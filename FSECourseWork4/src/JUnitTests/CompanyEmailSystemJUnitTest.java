@@ -66,8 +66,8 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testMenuOptions_OnStartUp() {
 		CompanyEmailSystem.main(null);
-		String expectedOutput = "What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r";
-		assertEquals(expectedOutput + "\n", outContent.toString());	
+		String expectedOutput = "What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n";
+		assertEquals(expectedOutput , outContent.toString());	
 	}
 	
 	
@@ -113,7 +113,7 @@ public class CompanyEmailSystemJUnitTest {
 		/* Initialized the projects array because method is tested without running main - AR 30.04.2018 */
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		for (int i = 0; i < 10000; i++) {
-			sysInput = kPTITLE1 + i;
+			sysInput = "\n" + kPTITLE1 + i;
 			inScan = new Scanner(sysInput);
 			CompanyEmailSystem.AddProject(inScan);
 		}
@@ -137,7 +137,7 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		
 		for (int i = 0; i < 5; i++) {
-			sysInput = kPTITLE1 + i; 
+			sysInput = "\n" + kPTITLE1 + i; 
 			inScan = new Scanner(sysInput);
 			CompanyEmailSystem.AddProject(inScan);
 		}
@@ -147,11 +147,53 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.ListProjects();
 		
 		String expectedOutput = 
-				  "1) " + kPTITLE1 + "0 [Design] - 0 emails\n"
+				  "1) " + kPTITLE1 + "0 [Feasibility] - 0 emails\n"
+				+ "2) " + kPTITLE1 + "1 [Feasibility] - 0 emails\n"
+				+ "3) " + kPTITLE1 + "2 [Feasibility] - 0 emails\n"
+				+ "4) " + kPTITLE1 + "3 [Feasibility] - 0 emails\n"
+				+ "5) " + kPTITLE1 + "4 [Feasibility] - 0 emails";
+		
+		assertEquals(expectedOutput + "\n", outContent.toString());		
+	}
+	
+	
+	@Test 
+	/* 
+	 * Testing: List Projects
+	 * Author: Aidan Reed
+	 * Co-Author: Athullya Roy
+	 * Test ID: 305
+	 * Date Tested: 
+	 * Test Result:
+	 * Notes: Tests the projects are listed correctly 
+	 * 		  Manually initialises project array and creates 6 projects
+	 * 		  Each project is set to one of the stages  
+	 * 
+	 */
+	
+	public void testListProjects_AllStages () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		
+		for (int i = 0; i < 6 ; i++) {
+			sysInput = "\n" + kPTITLE1 + i; 
+			inScan = new Scanner(sysInput);
+			CompanyEmailSystem.AddProject(inScan);
+			for (int y = 0; y < i; y++) {
+				CompanyEmailSystem.AllProjects.get(i).nextPhase();
+			}
+		}
+		
+		/* REMOVING THE SYS OUT FROM CREATING THE PROJECTS - AR 30.04.2018 */
+		outContent.reset();
+		CompanyEmailSystem.ListProjects();
+		
+		String expectedOutput = 
+				  "1) " + kPTITLE1 + "0 [Feasibility] - 0 emails\n"
 				+ "2) " + kPTITLE1 + "1 [Design] - 0 emails\n"
-				+ "3) " + kPTITLE1 + "2 [Design] - 0 emails\n"
-				+ "4) " + kPTITLE1 + "3 [Design] - 0 emails\n"
-				+ "5) " + kPTITLE1 + "4 [Design] - 0 emails";
+				+ "3) " + kPTITLE1 + "2 [Implementation] - 0 emails\n"
+				+ "4) " + kPTITLE1 + "3 [Testing] - 0 emails\n"
+				+ "5) " + kPTITLE1 + "4 [Deployment] - 0 emails\n"
+				+ "6) " + kPTITLE1 + "5 [Completed] - 0 emails";
 		
 		assertEquals(expectedOutput + "\n", outContent.toString());		
 	}
@@ -163,8 +205,8 @@ public class CompanyEmailSystemJUnitTest {
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
 	 * Test ID: 305
-	 * Date Tested: 
-	 * Test Result:
+	 * Date Tested: 01/05/2018
+	 * Test Result: FAIL
 	 * Notes: Create a project and then 10,000 emails to go inside
 	 * 		  When listing the projects 10,000 emails should be displayed
 	 * 		  
@@ -172,7 +214,7 @@ public class CompanyEmailSystemJUnitTest {
 	public void testListProjects_10KEmail () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		/* Creating the project for 10k Emails */
-		sysInput = kPTITLE1;
+		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		
@@ -187,7 +229,7 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.ListProjects();
 		
 		String expectedOutput = 
-				  "1) " + kPTITLE1 + " [Design] - 10000 emails";
+				  "1) " + kPTITLE1 + " [Feasibility] - 10000 emails";
 		
 		assertEquals(expectedOutput + "\n", outContent.toString());	
 	}
@@ -208,7 +250,7 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testAddProject_WithTitle () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = kPTITLE1;
+		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		String expectedOutput = "What is the title of the project?\n[Project added]";
@@ -230,7 +272,7 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testAddProject_WithTitle_ChecksIsSet () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = kPTITLE1;
+		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		assertEquals(kPTITLE1, CompanyEmailSystem.AllProjects.get(0).getPTitle());
@@ -242,7 +284,7 @@ public class CompanyEmailSystemJUnitTest {
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
 	 * Test ID: 308
-	 * Date Tested: 
+	 * Date Tested: i
 	 * Test Result:
 	 * Notes: Project created with no title provided. 
 	 * 		  As such default title should be given to project
@@ -252,12 +294,11 @@ public class CompanyEmailSystemJUnitTest {
 	public void testAddProject_NoTitle () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		/* SysInput similated user not inputting data AR - 1.05.2018*/
-		sysInput = "\n";
+		sysInput = "\n \n";
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		/*kDEFAULTTITLE Is defined at the top of the document */
 		assertEquals(kDEFAULTTITLE, CompanyEmailSystem.AllProjects.get(0).getPTitle());
-		
 	}
 	
 	
@@ -276,12 +317,12 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testListEmails_InitialPhase () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = kPTITLE1;
+		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		/* Adding the email to the project - AR 1.05.2018 */
 	
-		sysInput = kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
+		sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
 		inScan = new Scanner(sysInput);
 		/* Manually setting the current project to add email to - AR 1.05.2018 */
 		CompanyEmailSystem.currentProjShowing = 0;
@@ -290,7 +331,7 @@ public class CompanyEmailSystemJUnitTest {
 		outContent.reset();
 		CompanyEmailSystem.ListEmails(0);
 		String expectedOutput = 
-				"Email System [Design]\n" + 
+				"Email System [Feasibility]\n" + 
 				"\n" + 
 				"   From                Subject\n" + 
 				"--------------------------------\n" + 
@@ -313,18 +354,101 @@ public class CompanyEmailSystemJUnitTest {
 	 * 
 	 */
 	
-	public void testListEmails_InvalidPhase () {
+	public void testListEmails_Invalid () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = kPTITLE1;
+		sysInput = "\n" +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		
 		/* Removing the out put from adding email and new project from the output stream */
 		outContent.reset();
+		
+		
 		CompanyEmailSystem.ListEmails(20000);
 		String expectedOutput = "Error: Unknown Phase\n";
 		assertEquals(expectedOutput, outContent.toString());	
 	}
+	
+	
+	@Test 
+	/* 
+	 * Testing: List Phase
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 311
+	 * Date Tested: 
+	 * Test Result:
+	 * Notes: Tests the list email function 
+	 * 
+	 */
+	
+	public void testListPhases_InitialPhase () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		
+		/* Adding some emails to the initial stage */
+		for (int i = 0; i < 5 ; i++) {
+				sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
+				inScan = new Scanner(sysInput);
+				CompanyEmailSystem.AddEmail(inScan);
+		}
+		outContent.reset();
+		CompanyEmailSystem.ListPhases();
+		
+		String expectedOutput = 
+				  "1) Feasibility - 5 Emails\n";
+				
+		assertEquals(expectedOutput, outContent.toString());	
+	}
+	
+	
+	
+	@Test 
+	/* 
+	 * Testing: List Phase
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 311
+	 * Date Tested: 
+	 * Test Result:
+	 * Notes: Tests the list email function 
+	 * 
+	 */
+	
+	public void testListPhases_AllPhases () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		
+		for (int i = 0; i < 6 ; i++) {
+			for (int y = 0; y <= i; y++) {
+				sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
+				inScan = new Scanner(sysInput);
+				CompanyEmailSystem.AddEmail(inScan);
+			}
+			CompanyEmailSystem.AllProjects.get(0).nextPhase();
+		}
+		
+		outContent.reset();
+		CompanyEmailSystem.ListPhases();
+		
+		String expectedOutput = 
+				  "1) Feasibility - 1 Emails\n"
+				+ "2) Design - 2 Emails\n"
+				+ "3) Implementation - 3 Emails\n"
+				+ "4) Testing - 4 Emails\n"
+				+ "5) Deployment - 5 Emails\n"
+				+ "6) Completed - 6 Emails";
+				
+			
+		assertEquals(expectedOutput + "\n", outContent.toString());	
+	}
+	
+	
+	
 	@Test
 	/* 
 	 * Testing: Project Menu Display Upon Project Selection 
