@@ -327,7 +327,7 @@ public class CompanyEmailSystemJUnitTest {
 	}
 	@Test
 	/* 
-	 * Testing: Project Menu Display Upon Selection 
+	 * Testing: Project Menu Display Upon Project Selection 
 	 * Author: Ram Raja
 	 * Co-Author: Aidan Reed
 	 * Test ID: 316
@@ -338,7 +338,7 @@ public class CompanyEmailSystemJUnitTest {
 	 * 		  system should display the project menu list.
 	 * 
 	 */
-	public void testMenuOptions_Projcets() {
+	public void testMenuOptions_ViewProject() {
 		sysInput = "2";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
@@ -352,18 +352,17 @@ public class CompanyEmailSystemJUnitTest {
 	
 	@Test
 	/* 
-	 * Testing: Project Menu Display Upon Selection 
+	 * Testing: Project Menu Display With Non-Existent Projects
 	 * Author: Ram Raja
 	 * Co-Author: Aidan Reed
 	 * Test ID: 317
 	 * Date Tested: 03/05/2018 
 	 * Test Result: FAIL
-	 * Notes: When main loads, user is presented with a menu.
-	 * 		  When selecting project number, in this case "2",
-	 * 		  system should display the project menu list.
+	 * Notes: Testing projects "-1", "-7" and "7", "99" return 
+	 *        "Command not recognised" when attempted to be loaded.
 	 * 
 	 */
-	public void testInvalidProjectAccessibility() {
+	public void testMenuOptions_InvalidProjects() {
 		String expectedOutput = "What do you want to do?\n" + 
 				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
 				"Command not recognised\r\n" + 
@@ -402,18 +401,16 @@ public class CompanyEmailSystemJUnitTest {
 	
 	@Test
 	/* 
-	 * Testing: Project Menu Display Upon Selection 
+	 * Testing: Project Menu Display With Multiple Existing Projects
 	 * Author: Ram Raja
 	 * Co-Author: Aidan Reed
 	 * Test ID: 318
 	 * Date Tested: 03/05/2018 
 	 * Test Result: FAIL
-	 * Notes: When main loads, user is presented with a menu.
-	 * 		  When selecting project number, in this case "2",
-	 * 		  system should display the project menu list.
+	 * Notes: Testing projects "1", "2" and "3" display project menu once loaded.
 	 * 
 	 */
-	public void testValidProjectAccessibility() {
+	public void testMenuOptions_ExistingProjects() {
 		String expectedOutput = "What do you want to do?\n" + 
 				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
 				"What do you want to do?\n" + 
@@ -442,4 +439,31 @@ public class CompanyEmailSystemJUnitTest {
 
 	}
 	
+	@Test
+	/* 
+	 * Testing: Exiting a Project Using Menu Option
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 319
+	 * Date Tested: 03/05/2018 
+	 * Test Result: PASS
+	 * Notes: When a project is open, selecting "X" from menu
+	 *        should close project and return user to the main menu.
+	 * 
+	 */
+	public void testMenuOptions_ExitProject() {
+		sysInput = "2\rX";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		String expectedOutput = "What do you want to do?\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" +
+				"What do you want to do?\n" + 
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\r\n" +
+				"What do you want to do?\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\r";
+		assertEquals(expectedOutput + "\n", outContent.toString());
+		
+	}
+
 }
