@@ -27,14 +27,15 @@ We have commented our JUnit tests in the following format.
 	 * Test Result: PASS/FAIL
 	 */
 
-###Test Naming Structure
+### Test Naming Convention
 
-Test Naming Convention
-100 level = email
-200 level = project
-300 level = email system 
+We have a unique ID for all the tests that we carried out. In the documents we have a test table which contains the tests that we carried out for the different classes. Each test is assigned with a unique ID, which is referenced in teh JUnit files. All the tests for the CompanyEmail class has test ID's starting from 100. All the tests for the CompanyProject class has test ID's starting from 200. All the tests for the CompanyEmailSystem class has test ID's starting from 300.
 
-Bug Naming Structure
+* 100 level = CompanyEmail
+* 200 level = CompanyProject
+* 300 level = CompanyEmailSystem
+
+### Bug Naming Structure
 BUG100 LEVEL = EMAIL
 BUG200 LEVEL... 
 
