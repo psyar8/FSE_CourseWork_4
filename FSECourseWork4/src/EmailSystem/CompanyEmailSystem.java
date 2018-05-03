@@ -173,7 +173,7 @@ public class CompanyEmailSystem {
     public static void ListPhases() {
         CompanyProject cp = AllProjects.get(currentProjShowing);
         /* CHGE305 Operator changed from < to <= */
-        for (int x=0; x < cp.getPhaseByID(); x++ ) {
+        for (int x=0; x <= cp.getPhaseByID(); x++ ) {
             System.out.println((x+1)+") "+cp.getPhaseByName()+" - "+cp.getEmailsForPhase(x).size()+" Emails");
         }
     }
