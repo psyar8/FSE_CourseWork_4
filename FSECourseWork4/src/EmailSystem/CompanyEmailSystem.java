@@ -10,6 +10,13 @@ public class CompanyEmailSystem {
     public static ArrayList<CompanyProject> AllProjects;
     public static int currentProjShowing;
     
+    /*
+     * Change Impact: Main Method
+     * ChangeID: CHGE306
+     * Author: Ram Raja
+     * Date: 03.05.2018
+     * Notes: Removed "-1" being applied to project selection.
+     */
     public static void main(String[] args) {
         
         ///////
@@ -62,7 +69,7 @@ public class CompanyEmailSystem {
                         System.out.println("Goodbye!");
                         break;
                     } else if (Integer.parseInt(s) != -1 ) {
-                        currentProjShowing = Integer.parseInt(s)-1;
+                        currentProjShowing = Integer.parseInt(s); //Removed "-1", see CHGE306
                     } else {
                         System.out.println("Command not recognised");
                     }
