@@ -3,13 +3,11 @@
 In this project we have developed JUnit tests for the code provided for the 3 classes- CompanyEmail, CompanyProject, and CompanyEmailSystem. We have build the tests based on the test plan that we previously created. We have documented the tests that we carried out and have stated whether the tests we performed have passed or failed. If a test has failed, we edited the code so that the test could pass. This is documented as change table in CompanyEmail.doc. 
 
 ### The folder contains the following files:
-1. CompanyEmail.doc
+1. CourseWork4_Main.doc
 1. CompanyEmail.java
 1. CompanyEmail_UnitTests.java
-1. ComapanyEmailProject.doc
 1. ComapanyEmailProject.java
 1. ComapanyEmailProject_UnitTests.java
-1. CompanyEmailSystem.doc
 1. CompanyEmailSystem.java
 1. CompanyEmailSystem_UnitTests.java
 
