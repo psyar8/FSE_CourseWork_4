@@ -16,8 +16,17 @@ In this project we have developed JUnit tests for the code provided for the 3 cl
 Structure of Project
 ---------------------
 ### Comment structure
+We have commented our JUnit tests in the following format.
+	/* 
+	 * Testing: functionName()
+	 * Author: Author Name
+	 * Co-Author: Co-Author Name
+	 * Test ID: Test ID (see test table)
+	 * Date Tested: Date
+	 * Test Result: PASS/FAIL
+	 */
 
-Test Naming Structure
+###Test Naming Structure
 
 Test Naming Convention
 100 level = email
@@ -35,9 +44,9 @@ CHGNE100 LEVEL = EMAIL
 Authors
 --------
 
-Aidan Reed
-Ram Raja
-Christian Stubbs
-Justin Ng
-Athullya Roy
+* Aidan Reed
+* Ram Raja
+* Christian Stubbs
+* Justin Ng
+* Athullya Roy
 
