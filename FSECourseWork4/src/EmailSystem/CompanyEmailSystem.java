@@ -181,7 +181,7 @@ public class CompanyEmailSystem {
      * Change Impact: ListProject
      * ChangeID: CHGE307	
      * Author: Aidan Reed
-     * Date: 03.05.2018
+     * Date: 03/05/2018
      * Notes: Condition for loop operator changed to <= as first and last phase 
      * 		  were cut out.
      */
@@ -189,7 +189,7 @@ public class CompanyEmailSystem {
         CompanyProject cp = AllProjects.get(currentProjShowing);
         /* CHGE305 Operator changed from < to <= */
         for (int x=0; x <= cp.getPhaseByID(); x++ ) {
-        	/* CHGE306 - pass x to getPhaseByName */
+        	/* CHGE307 - pass x to getPhaseByName */
             System.out.println((x+1)+") "+cp.getPhaseByName(x)+" - "+cp.getEmailsForPhase(x).size()+" Emails");
         }
     }
