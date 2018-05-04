@@ -27,7 +27,7 @@ We have commented our JUnit tests in the following format.
 
 ### Test Naming Convention
 
-We have a unique ID for all the tests that we carried out. In the documents we have a test table which contains the tests that we carried out for the different classes. Each test is assigned with a unique ID, which is referenced in teh JUnit files. All the tests for the CompanyEmail class has test ID's starting from 100. All the tests for the CompanyProject class has test ID's starting from 200. All the tests for the CompanyEmailSystem class has test ID's starting from 300.
+We have a unique ID for all the tests that we carried out. In the documents we have a test table which contains the tests that we carried out for the different classes. Each test is assigned with a unique ID, which is referenced in the JUnit files. All the tests for the CompanyEmail class has test ID's starting from 100. All the tests for the CompanyProject class has test ID's starting from 200. All the tests for the CompanyEmailSystem class has test ID's starting from 300.
 
 * 100 level = CompanyEmail
 * 200 level = CompanyProject
