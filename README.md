@@ -49,6 +49,12 @@ As a team, we have logged all the bugs which we identified in the program. The c
 * CHGNE200 level = CompanyProject
 * CHGNE300 level = CompanyEmailSystem
 
+### JUnit Test Naming Convention
+
+All our JUnit tests are named in the following format:
+
+* testFunctionName_TestNumber()
+
 Authors
 --------
 
