@@ -58,9 +58,9 @@ All our JUnit tests are named in the following format:
 Authors
 --------
 
-* Aidan Reed
-* Ram Raja
-* Christian Stubbs
-* Justin Ng
-* Athullya Roy
+* Aidan Reed - psyar8
+* Ram Raja - psyrr1
+* Christian Stubbs - psycas
+* Justin Ng - psyjjn
+* Athullya Roy - psyar7
 
