@@ -245,7 +245,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Author: Christian Stubbs
 	 * Co-author: Justin Ng
 	 * Test ID: 213
-	 * Date Tested: 02.05.2018 | 27.04.2018
+	 * Date Tested: 03.05.2018 | 22.05.2018
 	 * Test Result: PASS       | FAIL
 	 * Notes: checks the email in array is same as number of emails in relevant phase, 
 	 * 		  then advances the phase and checks count is 0. 	 
@@ -266,8 +266,8 @@ public class CompanyEmailProject_UnitTests {
 	/*Author: Christian Stubbs
 	 * Co-author: Justin Ng
 	 * Test ID: 214
-	 * Date Tested: 02.05.2018
-	 * Test Result: FAIL
+	 * Date Tested: 03.05.2018 | 02.05.2018
+	 * Test Result: PASS       | FAIL
 	 * Notes: checks the email in array in current stage does not continue to be accessible 
 	 * when moving through stages. each stage has a unique number of emails
 	 * Fails due to predicted bug in nextPhase() 		 	
@@ -301,8 +301,8 @@ public class CompanyEmailProject_UnitTests {
 	 * Author: Christian Stubbs
 	 * Co-author: Justin Ng
 	 * Test ID: 216
-	 * Date Tested: 02.05.2018
-	 * Test Result: FAIL
+	 * Date Tested:  03.05.2018 | 02.05.2018
+	 * Test Result:  PASS       | FAIL
 	 * Notes: checks the no. emails in array is same as number of emails in all phases, 
 	 *  fails due to phase starting at '1' and not 0 as it should. Furthermore fails due to Arraylist not being created (bug)
 	 */
@@ -320,7 +320,7 @@ public class CompanyEmailProject_UnitTests {
 	@Test
 	/*
 	 * Author: Christian Stubbs
-	 * Co-author: Just7
+	 * Co-author: Justin Ng
 	 * Date Tested: 03.05.2018 | 02.05.2018
 	 * Test Result: PASS       | FAIL
 	 * Notes: checks the no. emails in array is same as number of emails in selected phase AFTER advancing phase, ensuring
@@ -533,7 +533,7 @@ public class CompanyEmailProject_UnitTests {
 	@Test 
 	/*	
 	 *  Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
+	 * Co-Author: Justin Ng
 	 * Test ID: 229
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
@@ -547,8 +547,8 @@ public class CompanyEmailProject_UnitTests {
 	
 	@Test 
 	/*	
-	 *  Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
+	 *  Author: Justin Ng
+	 * Co-Author: Aidan Reed
 	 * Test ID: 230
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
@@ -563,7 +563,7 @@ public class CompanyEmailProject_UnitTests {
 	@Test 
 	/*	
 	 *  Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
+	 * Co-Author: Justin Ng
 	 * Test ID: 231
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
@@ -579,8 +579,8 @@ public class CompanyEmailProject_UnitTests {
 	
 	@Test 
 	/*	
-	 * Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
+	 * Author: Justin Ng
+	 * Co-Author: Aidan Reed
 	 * Test ID: 232
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
@@ -595,7 +595,7 @@ public class CompanyEmailProject_UnitTests {
 	@Test 
 	/*	
 	 * Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
+	 * Co-Author: Justin Ng
 	 * Test ID: 233
 	 * Date Tested: 03.05.2018 | 25.04.2018
 	 * Test Result: PASS       | FAIL
@@ -610,8 +610,8 @@ public class CompanyEmailProject_UnitTests {
 	
 	@Test 
 	/*	
-	 *  Author: Aidan Reed
-	 * Co-Author: Christian Stubbs
+	 *  Author: Justin Ng
+	 * Co-Author: Aidan Reed
 	 * Test ID: 234
 	 * Date Tested: 02.05.2018 | 25.04.2018
 	 * Test Result: PASS       | FAIL

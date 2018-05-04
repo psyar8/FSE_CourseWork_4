@@ -78,8 +78,8 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: Exiting the program Main method
-	 * Author: Aidan Reed
-	 * Co-Author: Athullya Roy
+	 * Author: Athullya Roy
+	 * Co-Author: Aidan Reed
 	 * Test ID: 302
 	 * Date Tested: 01.05.2018
 	 * Test Result: PASS
@@ -127,8 +127,8 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: List Projects
-	 * Author: Aidan Reed
-	 * Co-Author: Athullya Roy
+	 * Author: Athullya Roy
+	 * Co-Author: Aidan Reed
 	 * Test ID: 304
 	 * Date Tested: 03.05.2018 | 02/05/2018 | 01/05/2018
 	 * Test Result: PASS       | FAIL       | FAIL
@@ -205,8 +205,8 @@ public class CompanyEmailSystemJUnitTest {
 	@Test(timeout=5000) 
 	/* 
 	 * Testing: List Projects
-	 * Author: Aidan Reed
-	 * Co-Author: Athullya Roy
+	 * Author: Athullya Roy
+	 * Co-Author: Aidan Reed
 	 * Test ID: 306
 	 * Date Tested: 03.05.2018 | 02/05/2018 | 01/05/2018
 	 * Test Result: PASS       | FAIL       | FAIL
@@ -263,8 +263,8 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: Add Projects
-	 * Author: Aidan Reed
-	 * Co-Author: Athullya Roy
+	 * Author: Athullya Roy
+	 * Co-Author: Aidan Reed
 	 * Test ID: 308
 	 * Date Tested: 03.05.2018 | 02/05/2017 | 01/05/2018
 	 * Test Result: PASS       | FAIL       | FAIL
@@ -308,8 +308,8 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: List Emails
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Athullya Roy
+	 * Co-Author: Aidan Reed
 	 * Test ID: 310
 	 * Date Tested: 03.05.2018 | 02/05/2017 | 01/05/2018
 	 * Test Result: PASS       | FAIL       | FAIL
@@ -457,8 +457,8 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: List Contacts
-	 * Author: Ram Raja
-	 * Co-Author: Aidan Reed
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
 	 * Test ID: 314
 	 * Date Tested: 03/05/2018
 	 * Test Result: PASS
@@ -525,8 +525,8 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: Next Phase
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 317
 	 * Date Tested: 03/05/2018
 	 * Test Result: PASS
