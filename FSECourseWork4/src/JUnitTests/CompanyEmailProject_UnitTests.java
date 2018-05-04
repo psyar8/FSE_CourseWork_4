@@ -15,7 +15,8 @@ import EmailSystem.CompanyEmail;
 import EmailSystem.CompanyEmailSystem;
 import EmailSystem.CompanyProject;
 /* FixMethodOrder is used to ensure tests run sequentially as they are written - JN: 25.04.18 */
-@FixMethodOrder(MethodSorters.JVM)
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CompanyEmailProject_UnitTests {
 
 	final static String kPTITLE1 = "12345678";
@@ -67,7 +68,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  Checks the email count for the project is 0
 	 */
 	
-	public void testDefaultConstructor_201() {
+	public void test01DefaultConstructor_201() {
 		assertEquals(1, companyProjectFirst_Empty.getPID());
 		
 		assertEquals(kDEFAULTTITLE, companyProjectFirst_Empty.getPTitle());
@@ -86,7 +87,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: PASS       | FAIL
 	 * Notes: Checks that the main constructor is created correctly and that the title is read
 	 */
-	public void testMainConstructor_202() {
+	public void test02MainConstructor_202() {
 		/* Checks that the GlobalProjectCounter is incremented in PID - JN: 30.04.18 */
 		assertEquals(3, companyProjectThird_Complete.getPID());
 		
@@ -106,7 +107,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: PASS
 	 * Notes: Checks that PID inits from 1 on creation
 	 */
-	public void testGetPID_203() {
+	public void test03GetPID_203() {
 		assertEquals(1, companyProjectFirst_Empty.getPID());
 	}
 	
@@ -119,7 +120,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: PASS
 	 * Notes: Checks that PID increments correctly after two more projects are made
 	 */
-	public void testGetPID_SecondStage_204() {
+	public void test04GetPID_SecondStage_204() {
 		assertEquals(3, companyProjectThird_Complete.getPID());
 	}
 	
@@ -133,7 +134,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: PASS
 	 * Notes: Checks that the project title is initialised correctly and can be returned
 	 */
-	public void testGetPTitle_205() {
+	public void test05GetPTitle_205() {
 		assertEquals("New Project", companyProjectFirst_Empty.getPTitle());
 	}
 	
@@ -146,7 +147,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: PASS
 	 * Notes: Checks that the title cannot be set if it is less than 10 characters long and should initialise title correctly
 	 */
-	public void testSetPTitleShort_206() {
+	public void test06SetPTitleShort_206() {
 		companyProjectFirst_Empty.setPTitle(kPTITLE1);
 		assertEquals("New Project", companyProjectFirst_Empty.getPTitle());
 	}
@@ -160,7 +161,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: PASS
 	 * Notes: Checks that the title can be set and called again if more than 10 chars long
 	 */
-	public void testSetPTitle_207() {
+	public void test07SetPTitle_207() {
 		companyProjectFirst_Empty.setPTitle(kPTITLE2);
 		assertEquals(kPTITLE2, companyProjectFirst_Empty.getPTitle());
 	}
@@ -174,7 +175,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: PASS
 	 * Notes: Checks if contact exists in newly created Array List
 	 */
-	public void testIsContact_208() {
+	public void test08IsContact_208() {
 		/* Check if contact exists in empty Array List - JN: 25.04.18 */
 		assertFalse(companyProjectFirst_Empty.isContact(kCONTACT1));
 	}
@@ -188,7 +189,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
 	 */
-	public void testIsContact_SecondStage_209() {
+	public void test09IsContact_SecondStage_209() {
 		/* Add a new contact to check if it can be read back - JN: 25.04.18 */
 		companyProjectFirst_Empty.addContact(kCONTACT1);
 		assertTrue(companyProjectFirst_Empty.isContact(kCONTACT1));
@@ -202,7 +203,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Date Tested: 25.04.2018
 	 * Test Result: PASS
 	 */
-	public void testAddContact_210() {
+	public void test10AddContact_210() {
 		/* Add two new contacts to check if they can be read back - JN: 25.04.18 */
 		companyProjectFirst_Empty.addContact(kCONTACT2);
 		companyProjectFirst_Empty.addContact(kCONTACT3);
@@ -220,7 +221,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: Pass
 	 * Notes: checks if the number of emails is the same size as the array (0)
 	 */
-	public void testGetEmailsforPhase_211() {
+	public void test11GetEmailsforPhase_211() {
 		assertEquals(0, companyProjectForth_Phases.getEmailsForPhase().size());
 	}
 	
@@ -235,7 +236,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Test Result: Pass
 	 * Notes: changed number of emails in array. checks if passes in different array sizes
 	 */
-	public void testGetEmailsforPhase_FirstStage_212() {
+	public void test12GetEmailsforPhase_FirstStage_212() {
 		companyProjectForth_Phases.addEmail(new CompanyEmail (kSENDER, kRECIPIENT, kSUBJECT, kBODY1));
 		assertEquals(1, companyProjectForth_Phases.getEmailsForPhase().size());
 	}
@@ -250,7 +251,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: checks the email in array is same as number of emails in relevant phase, 
 	 * 		  then advances the phase and checks count is 0. 	 
 	 */
-	public void testGetEmailsforPhase_AdvStage_1000Emails_213() {
+	public void test13GetEmailsforPhase_AdvStage_1000Emails_213() {
 		/*Creating 1000 emails */
 		for (int i = 0 ; i < 1000; i++) {
 			companyProjectForth_Phases.addEmail(new CompanyEmail (kSENDER, kRECIPIENT, kSUBJECT, kBODY1));
@@ -272,7 +273,7 @@ public class CompanyEmailProject_UnitTests {
 	 * when moving through stages. each stage has a unique number of emails
 	 * Fails due to predicted bug in nextPhase() 		 	
 	 */
-	public void testGetEmailsforPhase_6Stage_1000Emails_214() {	
+	public void test14GetEmailsforPhase_6Stage_1000Emails_214() {	
 		for (int i = 0 ; i < 6; i++) {
 			for (int y = 0; y < i; y ++) {
 				companyProjectForth_Phases.addEmail(new CompanyEmail (kSENDER, kRECIPIENT, kSUBJECT, kBODY1));
@@ -292,7 +293,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: checks the email in array is same as number of emails in the chosen phase (first), 
 	 *  
 	 */	    
-	public void testGetEmailsforChosenPhase_FirstPhase_215() {
+	public void test15GetEmailsforChosenPhase_FirstPhase_215() {
 		assertEquals(0, companyProjectForth_Phases.getEmailsForPhase(0).size());		
 	}
 	
@@ -306,7 +307,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: checks the no. emails in array is same as number of emails in all phases, 
 	 *  fails due to phase starting at '1' and not 0 as it should. Furthermore fails due to Arraylist not being created (bug)
 	 */
-	public void testGetEmailsforChosenPhase_AllPhases_216() {
+	public void test16GetEmailsforChosenPhase_AllPhases_216() {
 		for (int i = 0; i < 6; i++) {
 			for (int y = 0; y < i; y++) {
 				companyProjectForth_Phases.addEmail(new CompanyEmail (kSENDER, kRECIPIENT, kSUBJECT, kBODY1));
@@ -327,7 +328,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 	Emails are not removed.
 	 *  Fail due to phase starting at '1' and not 0 as it should. Furthermore, fails due to Arraylist not being created (bug)
 	*/
-	public void testGetEmailsforChosenPhase_FirstPhaseAfterAdvance_217() { 
+	public void test17GetEmailsforChosenPhase_FirstPhaseAfterAdvance_217() { 
 		companyProjectForth_Phases.addEmail(new CompanyEmail (kSENDER, kRECIPIENT, kSUBJECT, kBODY1));
 		companyProjectForth_Phases.nextPhase();
 		assertEquals(1, companyProjectForth_Phases.getEmailsForPhase(0).size()); 
@@ -345,7 +346,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: advances the phase once. Checks if the phase is equal to 1. 
 	 *  Fail due to phase starting at '1' and not 0 as it should. Furthermore, fails due to Arraylist not being created (bug)
 	 */
-	public void testNextPhase_FromFirst_218() {  
+	public void test18NextPhase_FromFirst_218() {  
 		companyProjectForth_Phases.nextPhase();
 		assertEquals(1, companyProjectForth_Phases.getPhaseByID());
 	}
@@ -360,7 +361,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: advances the phase to the last phase. Checks if the phase is equal to 5 (last phase). 
 	 *  Fail due to phase starting at '1' and not 0 as it should. Furthermore, fails due to Arraylist not being created (bug)
 	 */
-	public void testNextPhase_AdvanceLast_219() { 
+	public void test19NextPhase_AdvanceLast_219() { 
 		for (int i = 0; i < 6; i++) {
 			companyProjectForth_Phases.nextPhase();
 		}
@@ -380,7 +381,7 @@ public class CompanyEmailProject_UnitTests {
 	 *        Fail due to phase starting at '1' and not 0 as it should. Furthermore, fails due to Arraylist not being created (bug)
 	 *        Can't see if goes past phase 6 until bug fixed. 
 	 */	
-	public void testNextPhase_PastFinal_220() {
+	public void test20NextPhase_PastFinal_220() {
 		for (int i = 0; i < 6; i++) {
 			companyProjectForth_Phases.nextPhase();
 		}
@@ -400,7 +401,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  Reason for failing likely due to mismatched project phase numbers 
 	 * 		  Passes 
 	 */	
-	public void testGetPhaseName_InitialPhase_221() {
+	public void test21GetPhaseName_InitialPhase_221() {
 		assertEquals(CompanyEmailSystem.ProjectPhases[0],companyProjectForth_Phases.getPhaseByName());
 	}
 	
@@ -414,7 +415,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: Tests the get Phase name method when moving project to next phase
 	 * 		  Reason for failing likely due to mismatched project phase numbers 
 	 */	
-	public void testGetPhaseName_MoveNext_222() {
+	public void test22GetPhaseName_MoveNext_222() {
 		companyProjectForth_Phases.nextPhase();
 		int phaseID = companyProjectForth_Phases.getPhaseByID();
 		assertEquals(CompanyEmailSystem.ProjectPhases[phaseID],companyProjectForth_Phases.getPhaseByName());
@@ -431,7 +432,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: Test to see if phase name is still the last phase name despite attempting to move phase after 6
 	 * 		  Reason for failing likely due to mismatched project phase numbers 
 	 */	
-	public void testGetPhaseName_MovePastEnd_223() {
+	public void test23GetPhaseName_MovePastEnd_223() {
 		for (int i = 0; i < lengthProjects; i++) {
 			companyProjectForth_Phases.nextPhase();
 		}
@@ -451,7 +452,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  To start of array
 	 */
 	
-	public void testGetPhaseID_FirstStage_224() {
+	public void test24GetPhaseID_FirstStage_224() {
 		assertEquals(0, companyProjectFirst_Empty.getPhaseByID());
 	}
 	
@@ -467,7 +468,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  Also checks correct return value of nextPhase method
 	 */
 	
-	public void testGetPhaseID_SecondStage_225() {
+	public void test25GetPhaseID_SecondStage_225() {
 		assertTrue(companyProjectFirst_Empty.nextPhase());
 		assertEquals(1, companyProjectFirst_Empty.getPhaseByID());
 	}
@@ -484,7 +485,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  
 	 */
 	
-	public void testGetPhaseID_AllStages_226() {	
+	public void test26GetPhaseID_AllStages_226() {	
 		for (int i = 0; i < lengthProjects; i++, companyProjectSecond_Phases.nextPhase()) {
 			assertEquals(i, companyProjectSecond_Phases.getPhaseByID());
 		}
@@ -502,7 +503,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: Checks phaseID value of a project when trying to move
 	 * 		  passed the limit of the list of projects.
 	 */
-	public void testGetPhaseID_FinalStageToNext_227() {
+	public void test27GetPhaseID_FinalStageToNext_227() {
 		
 		for (int i = 0; i < lengthProjects ; i++, companyProjectSecond_Phases.nextPhase())
 			;
@@ -541,7 +542,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  
 	 */
 	
-	public void testGetProjectContacts_TypeCheckArrayList_229 () {
+	public void test29GetProjectContacts_TypeCheckArrayList_229 () {
 		assertThat(companyProjectFirst_Empty.getProjectContacts(), instanceOf(ArrayList.class));
 	}
 	
@@ -556,7 +557,7 @@ public class CompanyEmailProject_UnitTests {
 	 *        first element is equal to kCONTACT1 constant 
 	 */
 	
-	public void testGetProjectContacts_FirstElement_230 () {
+	public void test30GetProjectContacts_FirstElement_230 () {
 		assertEquals(kCONTACT1, companyProjectThird_Complete.getProjectContacts().get(0));
 	}
 	
@@ -571,7 +572,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  is of type string
 	 */
 	
-	public void testGetProjectContacts_ElementType_231 () {
+	public void test31GetProjectContacts_ElementType_231 () {
 		assertThat(companyProjectThird_Complete.getProjectContacts().get(0), instanceOf(String.class));
 	}
 	
@@ -587,7 +588,7 @@ public class CompanyEmailProject_UnitTests {
 	 * Notes: Checks toString method returns value is of type string
 	 */
 	
-	public void testToStringOverride_TypeCheck_232 () {
+	public void test32ToStringOverride_TypeCheck_232 () {
 		assertThat(companyProjectFirst_Empty.toString(), instanceOf(String.class));
 	}
 	
@@ -603,7 +604,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  In the form "Project Title [Project Phase]
 	 */
 	
-	public void testToStringOverride_ValueCheck_233 () {
+	public void test33ToStringOverride_ValueCheck_233 () {
 		String expected = kPTITLE1 + " [" + CompanyEmailSystem.ProjectPhases[0] + "]";
 		assertEquals(expected, companyProjectThird_Complete.toString());
 	}
@@ -620,7 +621,7 @@ public class CompanyEmailProject_UnitTests {
 	 * 		  for all stages of the project
 	 */
 	
-	public void testToStringOverride_ValueCheck_AllStages_234 () {
+	public void test34ToStringOverride_ValueCheck_AllStages_234 () {
 		String expected;
 		for (int i = 0; i < lengthProjects ; i++) {
 			 expected = kPTITLE1 + " [" + CompanyEmailSystem.ProjectPhases[i] + "]";

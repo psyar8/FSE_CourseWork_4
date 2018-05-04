@@ -11,7 +11,7 @@ import EmailSystem.CompanyEmail;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-@FixMethodOrder(MethodSorters.JVM)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CompanyEmail_UnitTests {
 	
 	final String kSENDER = "joe.bloggs@gmail.com";
