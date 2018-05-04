@@ -44,11 +44,11 @@ public class CompanyEmail_UnitTests {
 	 * Author: Ram Raja
 	 * Co-Author: Athullya Roy
 	 * Test ID: 101
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 26.04.2018
+	 * Test Result: PASS       | FAIL
 	 */
 	
-	public void testDefaultConstructor() {
+	public void testDefaultConstructor_101() {
 		assertNull(nullEmail.fromAddress());
 		assertNull(nullEmail.toAddress());
 		assertNull(nullEmail.subjectLine());
@@ -61,11 +61,11 @@ public class CompanyEmail_UnitTests {
 	 * Author: Ram Raja
 	 * Co-Author: Athullya Roy
 	 * Test ID: 102
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 26.04.2018
+	 * Test Result: PASS       | FAIL
 	 */
 	
-	public void testMainConstructor_allParam() {
+	public void testMainConstructor_allParam_102() {
 		assertNotNull(populatedEmail.fromAddress());
 		assertNotNull(populatedEmail.toAddress());
 		assertNotNull(populatedEmail.subjectLine());
@@ -79,11 +79,11 @@ public class CompanyEmail_UnitTests {
 	 * Author: Ram Raja
 	 * Co-Author: Athullya Roy
 	 * Test ID: 103
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 26.04.2018
+	 * Test Result: PASS       | FAIL
 	 */
 	
-	public void testMainConstructor_recipientParam() {
+	public void testMainConstructor_recipientParam_103() {
 		assertNotNull(noRecipientEmail.fromAddress());
 		assertNull(noRecipientEmail.toAddress());
 		assertNotNull(noRecipientEmail.subjectLine());
@@ -97,11 +97,11 @@ public class CompanyEmail_UnitTests {
 	 * Author: Ram Raja
 	 * Co-Author: Athullya Roy
 	 * Test ID: 104
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 26.04.2018
+	 * Test Result: PASS       | FAIL
 	 */
 	
-	public void testMainConstructor_senderParam() {
+	public void testMainConstructor_senderParam_104() {
 		assertNotNull(senderEmail.fromAddress());
 		assertNull(senderEmail.toAddress());
 		assertNull(senderEmail.subjectLine());
@@ -117,7 +117,7 @@ public class CompanyEmail_UnitTests {
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 */
-	public void testFromAddress() {
+	public void testFromAddress_105_106() {
 		String givenFromAddress = populatedEmail.fromAddress();
 		String nullFromAddress = nullEmail.fromAddress();
 		assertEquals(kSENDER, givenFromAddress);
@@ -134,7 +134,7 @@ public class CompanyEmail_UnitTests {
 	 * Test Result: PASS
 	 */
 	
-	public void testToAddress() {
+	public void testToAddress_107_108() {
 		String givenToAddress = populatedEmail.toAddress();
 		String nullToAddress = nullEmail.toAddress();
 		assertEquals(kRECIPIENT, givenToAddress);
@@ -150,7 +150,7 @@ public class CompanyEmail_UnitTests {
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 */
-	public void testSubjectLineNull() {
+	public void testSubjectLineNull_109() {
 		assertEquals(null, nullEmail.subjectLine()); 
 	}
 	
@@ -165,7 +165,7 @@ public class CompanyEmail_UnitTests {
 	 */
 	
 	@Test
-	public void testSubjectLineNotNull() {
+	public void testSubjectLineNotNull_110() {
 		assertNotNull(populatedEmail.subjectLine());
 	}
 	
@@ -176,11 +176,11 @@ public class CompanyEmail_UnitTests {
 	 * Author: Athullya Roy
 	 * Co-Author: Ram Raja
 	 * Test ID: 111
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 26.04.2018
+	 * Test Result: PASS       | FAIL
 	 */
 	
-	public void testSubjectBody() {
+	public void testSubjectBody_111() {
 		assertNotNull(populatedEmail.emailMessage());
 	}
 	
@@ -191,10 +191,10 @@ public class CompanyEmail_UnitTests {
 	 * Author: Athullya Roy
 	 * Co-Author: Ram Raja
 	 * Test ID: 112
-	 * Date Tested: 27.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 26.04.2018
+	 * Test Result: PASS       | FAIL
 	 */	
-	public void testSubjectBodyNull(){
+	public void testSubjectBodyNull_112(){
 		assertNull(nullEmail.emailMessage());
 	}
 
@@ -208,7 +208,7 @@ public class CompanyEmail_UnitTests {
 	 * Date Tested: 27.04.2018
 	 * Test Result: PASS
 	 */	
-	public void testSetFromCorrectFormat(){
+	public void testSetFromCorrectFormat_113(){
 		populatedEmail.setFrom(kSENDER);
 		assertEquals(kSENDER, populatedEmail.fromAddress());
 	}
@@ -219,10 +219,10 @@ public class CompanyEmail_UnitTests {
 	 * Author: Athullya Roy
 	 * Co-Author: Ram Raja
 	 * Test ID: 114
-	 * Date Tested: 27.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 02/05/2018 | 27.04.2018
+	 * Test Result: PASS       | FAIL
 	 */	
-	public void testSetFromIncorrectFormat(){
+	public void testSetFromIncorrectFormat_114(){
 		assertFalse(populatedEmail.setFrom("joe.bloggs"));
 	}
 	
@@ -236,7 +236,7 @@ public class CompanyEmail_UnitTests {
 	 * Date Tested: 27.04.2018
 	 * Test Result: PASS
 	 */	
-	public void testSetToCorrectFormat(){
+	public void testSetToCorrectFormat_115(){
 		
 		populatedEmail.setTo(kRECIPIENT);
 		assertEquals(kRECIPIENT, populatedEmail.toAddress());
@@ -248,10 +248,10 @@ public class CompanyEmail_UnitTests {
 	 * Author: Athullya Roy
 	 * Co-Author: Ram Raja
 	 * Test ID: 116
-	 * Date Tested: 27.04.2018
-	 * Test Result:FAIL
+	 * Date Tested: 02/05/2018 | 27.04.2018
+	 * Test Result: PASS       | FAIL
 	 */	
-	public void testSetToIncorrectFormat() {
+	public void testSetToIncorrectFormat_116() {
 		assertFalse(populatedEmail.setTo("joe.bloggs"));
 
 	}
@@ -265,7 +265,7 @@ public class CompanyEmail_UnitTests {
 	 * Date Tested: 27.04.2018
 	 * Test Result:PASS
 	 */	
-	public void testSetSubjectStringPassed() {
+	public void testSetSubjectStringPassed_117() {
 		populatedEmail.setSubject(kSUBJECT);
 		assertEquals(kSUBJECT, populatedEmail.subjectLine());
 	}
@@ -276,10 +276,10 @@ public class CompanyEmail_UnitTests {
 	 * Author: Athullya Roy
 	 * Co-Author: Ram Raja
 	 * Test ID: 118
-	 * Date Tested: 27.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 27.04.2018
+	 * Test Result: PASS       | FAIL
 	 */	
-	public void testSetSubjectNullPassed() {
+	public void testSetSubjectNullPassed_118() {
 		populatedEmail.setSubject(null);
 		assertEquals(null, populatedEmail.subjectLine());
 	}
@@ -291,13 +291,13 @@ public class CompanyEmail_UnitTests {
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
 	 * Test ID: 119
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 27.04.2018
+	 * Test Result: PASS       | FAIL
 	 * Notes: Checks value String body is set in the object to the constant used
 	 * 		  To check method call to emailMessage to retrieve
 	 */
 	
-	public void setEmailBody_NormalString () {
+	public void setEmailBody_NormalString_119 () {
 		noEmailBody.setMessage(kBODY1);
 		/*Now need to use emailMessage method to check it was input*/
 		assertEquals(kBODY1, noEmailBody.emailMessage());
@@ -306,16 +306,16 @@ public class CompanyEmail_UnitTests {
 	@Test
 	/* 
 	 * Testing: setMessage()
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 120
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27/04/2018 | 27/04/2018
+	 * Test Result: PASS       | FAIL
 	 * Notes: Checks value String emailBody is an empty string using the constant defined
 	 * 		  To check method call to emailMessage to retrieve
 	 */
 	
-	public void setEmailBody_EmptyString () {
+	public void setEmailBody_EmptyString_120 () {
 		noEmailBody.setMessage(kBODY3);
 		/*Now need to use emailMessage method to check it was input*/
 		assertEquals(kBODY3, noEmailBody.emailMessage());
@@ -331,21 +331,21 @@ public class CompanyEmail_UnitTests {
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when all attributes are not set
 	 */
-	public void checkValidity_AllNull () {
+	public void checkValidity_AllNull_121 () {
 		assertFalse(nullEmail.isValid());
 	}
 	
 	@Test
 	/* 
 	 * Testing: isValid()
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 122
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when all attributes are set
 	 */
-	public void checkValidity_AllSet () {
+	public void checkValidity_AllSet_122 () {
 		assertTrue(populatedEmail.isValid());
 	}
 	
@@ -359,21 +359,21 @@ public class CompanyEmail_UnitTests {
 	 * 		  at once. This case is setFrom
 	 */
 	
-	public void checkValidity_Individual_SetFrom () {
+	public void checkValidity_Individual_SetFrom_123 () {
 		nullEmail.setFrom(kSENDER);
 		assertFalse(nullEmail.isValid());
 	}
 	
 	@Test
-	/* Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	/* Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 124
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when only one attribute is set
 	 * 		  at once. This case is setTo
 	 */
-	public void checkValidity_Individual_SetTo () {
+	public void checkValidity_Individual_SetTo_124 () {
 		nullEmail.setTo(kRECIPIENT);
 		assertFalse(nullEmail.isValid());
 	}
@@ -387,21 +387,21 @@ public class CompanyEmail_UnitTests {
 	 * Notes: Checks the validity of a email object when only one attribute is set
 	 * 		  at once. This case is setSubject
 	 */
-	public void checkValidity_Individual_SetSubject () {
+	public void checkValidity_Individual_SetSubject_125 () {
 		nullEmail.setSubject(kSUBJECT);
 		assertFalse(nullEmail.isValid());	
 	}
 	
 	@Test
-	/* Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	/* Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 126
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
 	 * Notes: Checks the validity of a email object when only one attribute is set
 	 * 		  at once. This case is setMessage
 	 */
-	public void checkValidity_Individual_SetMessage () {
+	public void checkValidity_Individual_SetMessage_126 () {
 		nullEmail.setMessage(kBODY1);
 		assertFalse(nullEmail.isValid());	
 	}
@@ -417,15 +417,15 @@ public class CompanyEmail_UnitTests {
 	 * Notes: Checks toString method returns value is of type string
 	 */
 	
-	public void toStringOverride_TypeCheck () {
+	public void toStringOverride_TypeCheck_127 () {
 		assertThat(populatedEmail.toString(), instanceOf(String.class));
 	}
 	
 	@Test 
 	/*	
 	 * Testing: toString()
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 128
 	 * Date Tested: 26.04.2018
 	 * Test Result: PASS
@@ -433,7 +433,7 @@ public class CompanyEmail_UnitTests {
 	 * 		  In the form Correct Subject set
 	 */
 	
-	public void toStringOverride_ValueCheck_SetSubject () {
+	public void toStringOverride_ValueCheck_SetSubject_128 () {
 		nullEmail.setSubject(kSUBJECT);
 		assertEquals(kSUBJECT, nullEmail.toString());
 	}
@@ -450,7 +450,7 @@ public class CompanyEmail_UnitTests {
 	 * 		  When subject is empty string
 	 */
 	
-	public void toStringOverride_ValueCheck_EmptyString () {
+	public void toStringOverride_ValueCheck_EmptyString_129 () {
 		nullEmail.setSubject("");
 		assertEquals("[no subject]", nullEmail.toString());
 	}
@@ -458,16 +458,16 @@ public class CompanyEmail_UnitTests {
 	@Test 
 	/*	
 	 * Testing: toString()
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 130
-	 * Date Tested: 26.04.2018
-	 * Test Result: FAIL
+	 * Date Tested: 27.04.2018 | 27.04.2018
+	 * Test Result: PASS       | FAIL
 	 * Notes: Checks toString method returns correct String 
 	 * 		  When subject is not set at all
 	 */
 	
-	public void toStringOverride_ValueCheck_Null () {
+	public void toStringOverride_ValueCheck_Null_130 () {
 		assertEquals("[no subject]", nullEmail.toString());
 	}
 	
@@ -483,7 +483,7 @@ public class CompanyEmail_UnitTests {
 	 * Notes: Fields with access value of 2 is the Int representation
 	 * 		  of the private access modifier
 	 */
-	public void testFieldAccessorType () {
+	public void testFieldAccessorType_131() {
 		Field[] companyEmailMembers = CompanyEmail.class.getDeclaredFields();
 		
 	    for (Field field : companyEmailMembers) {
@@ -495,14 +495,14 @@ public class CompanyEmail_UnitTests {
 	@Test
 	/* 
 	 * Testing validity of full email when using setTo
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 132
 	 * Date Tested: 27.04.2018	
 	 * Test Result: PASS
 	 * Notes: Checks for bad email combinations and if they were set
 	 */
-	public void testValidateFullEmail_ToAddress () {
+	public void testValidateFullEmail_ToAddress_132 () {
 		nullEmail.setTo(kBADEMAIL1);
 		assertNull(nullEmail.toAddress());
 		nullEmail.setTo(kBADEMAIL2);
@@ -517,8 +517,8 @@ public class CompanyEmail_UnitTests {
 	@Test
 	/* 
 	 * Testing validity of full email when using setTo
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
 	 * Test ID: 132
 	 * Date Tested: 27.04.2018	
 	 * Test Result: PASS

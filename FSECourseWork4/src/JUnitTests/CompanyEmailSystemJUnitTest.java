@@ -5,7 +5,10 @@ import EmailSystem.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -13,7 +16,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+@FixMethodOrder(MethodSorters.JVM)
 public class CompanyEmailSystemJUnitTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	/* String used to pass test inputs into scanner */
@@ -510,9 +513,123 @@ public class CompanyEmailSystemJUnitTest {
 				  + "Which email address is it to?\n"
 				  + "What is the Subject?\n"
 				  + "What is the Message?\n"
-				  + "[Email added to " + kPTITLE1 + " [Feasibility]]";
+				  + "[Email added to " + kPTITLE1 + " [Feasibility]]\n";
 				
 		assertEquals(expectedOutput, outContent.toString());	
+	}
+	
+	
+	
+	
+	
+	@Test 
+	/* 
+	 * Testing: Next Phase
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 317
+	 * Date Tested: 03/05/2018
+	 * Test Result: PASS
+	 * Notes: The system is tested to ensure the correct user feedback is provided 
+	 * 		  When moving project to next stage
+	 */
+	public void testNextPhase_317 () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		CompanyEmailSystem.currentProjShowing = 0;
+		outContent.reset();
+		String expectedOutput = 
+				  "[Phase changed: Email System [Design]\n";
+		
+		CompanyEmailSystem.ChangeProjectPhase();
+		assertEquals(expectedOutput, outContent.toString());	
+	}
+	
+	@Test 
+	/* 
+	 * Testing: Next Phase
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 318
+	 * Date Tested: 03/05/2018
+	 * Test Result: PASS
+	 * Notes: The system is tested to ensure the correct user feedback is provided 
+	 * 		  When moving project to next stage for all stages
+	 */
+	public void testNextPhaseAllPhases_318 () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		CompanyEmailSystem.currentProjShowing = 0;
+		outContent.reset();
+		String expectedOutput = 
+				  "[Phase changed: Email System [Design]\n"
+				  + "[Phase changed: Email System [Implementation]\n"
+				  + "[Phase changed: Email System [Testing]\n"
+				  + "[Phase changed: Email System [Deployment]\n"
+				  + "[Phase changed: Email System [Completed]\n";
+		for (int i = 0; i < 5; i++) {
+			CompanyEmailSystem.ChangeProjectPhase();
+		}
+		assertEquals(expectedOutput, outContent.toString());	
+	}
+	
+	@Test
+	/* 
+	 * Testing: Next Phase
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 319
+	 * Date Tested: 03/05/2018
+	 * Test Result: PASS
+	 * Notes: The system is tested to ensure the correct user feedback is provided 
+	 * 		  When moving project to next stage when the user is in the final 
+	 * 		  stage and tries to move past.
+	 */
+	public void testNextPhasePastLast_319 () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		CompanyEmailSystem.currentProjShowing = 0;
+		
+		String expectedOutput = 
+				  "Project already in last phase.\n";
+		for (int i = 0; i < 6; i++) {
+			CompanyEmailSystem.ChangeProjectPhase();
+		}
+		outContent.reset();
+		
+		CompanyEmailSystem.ChangeProjectPhase();
+		assertEquals(expectedOutput, outContent.toString());	
+	}
+	
+	@Test
+	/* 
+	 * Testing:  Main Method
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 320
+	 * Date Tested: 04/05/2018
+	 * Test Result: PASS
+	 * Notes: When a incorrect command is entered the program should not throw an exception
+	 * 		  it should say command not recgonised and display the options again.
+	 */
+	public void testMenuOptionsException_320 () {
+		sysInput = "z";
+		inStream = new ByteArrayInputStream(sysInput.getBytes());
+		System.setIn(inStream);
+		CompanyEmailSystem.main(null);
+		String expectedOutput = "What do you want to do?\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
+				"Command not recognised\n" +
+				"What do you want to do?\n" +
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\n";
+	
+		assertEquals(expectedOutput, outContent.toString());
 	}
 	
 
@@ -521,7 +638,7 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: Project Menu Display Upon Project Selection 
 	 * Author: Ram Raja
 	 * Co-Author: Aidan Reed
-	 * Test ID: 316
+	 * Test ID: 321
 	 * Date Tested: 03/05/2018 
 	 * Test Result: PASS
 	 * Notes: When main loads, user is presented with a menu.
@@ -529,16 +646,16 @@ public class CompanyEmailSystemJUnitTest {
 	 * 		  system should display the project menu list.
 	 * 
 	 */
-	public void testMenuOptions_ViewProject_316() {
+	public void testMenuOptions_ViewProject_321() {
 		sysInput = "2";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
 		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
 				"What do you want to do?\n" + 
-				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\r";
-		assertEquals(expectedOutput + "\n", outContent.toString());
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\n";
+		assertEquals(expectedOutput, outContent.toString());
 	}
 	
 	
@@ -550,46 +667,46 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: Project Menu Display With Non-Existent Projects
 	 * Author: Ram Raja
 	 * Co-Author: Aidan Reed
-	 * Test ID: 317
+	 * Test ID: 322
 	 * Date Tested: 03/05/2018 
 	 * Test Result: PASS
 	 * Notes: Testing projects "-1", "-7" and "7", "99" return 
 	 *        "Command not recognised" when attempted to be loaded.
 	 * 
 	 */
-	public void testMenuOptions_InvalidProjects_317() {
+	public void testMenuOptions_InvalidProjects_322() {
 		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
-				"Command not recognised\r\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
+				"Command not recognised\n" + 
 				"What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\r";
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\n";
 		
 		sysInput = "-1";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		assertEquals(expectedOutput, outContent.toString());
 		outContent.reset();
 		
 		sysInput = "-7";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		assertEquals(expectedOutput, outContent.toString());
 		outContent.reset();
 		
 		sysInput = "7";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		assertEquals(expectedOutput, outContent.toString());
 		outContent.reset();
 
 		sysInput = "99";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		assertEquals(expectedOutput, outContent.toString());
 		outContent.reset();
 
 	}
@@ -599,37 +716,37 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: Project Menu Display With Multiple Existing Projects
 	 * Author: Ram Raja
 	 * Co-Author: Aidan Reed
-	 * Test ID: 318
+	 * Test ID: 323
 	 * Date Tested: 03/05/2018 
 	 * Test Result: FAIL
 	 * Notes: Testing projects "1", "2" and "3" display project menu once loaded.
 	 * 
 	 */
-	public void testMenuOptions_ExistingProjects() {
+	public void testMenuOptions_ExistingProjects_232() {
 		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
 				"What do you want to do?\n" + 
-				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\r";
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\n";
 		
 		sysInput = "1";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		assertEquals(expectedOutput, outContent.toString());
 		outContent.reset();
 		
 		sysInput = "2";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		assertEquals(expectedOutput, outContent.toString());
 		outContent.reset();
 		
 		sysInput = "3";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		assertEquals(expectedOutput, outContent.toString());
 		outContent.reset();
 
 	}
@@ -639,25 +756,25 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: Exiting a Project Using Menu Option
 	 * Author: Ram Raja
 	 * Co-Author: Aidan Reed
-	 * Test ID: 319
+	 * Test ID: 324
 	 * Date Tested: 03/05/2018 
 	 * Test Result: PASS
 	 * Notes: When a project is open, selecting "X" from menu
 	 *        should close project and return user to the main menu.
 	 * 
 	 */
-	public void testMenuOptions_ExitProject() {
+	public void testMenuOptions_ExitProject_324() {
 		sysInput = "2\rX";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
 		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" +
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" +
 				"What do you want to do?\n" + 
-				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\r\n" +
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\n" +
 				"What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\r";
-		assertEquals(expectedOutput + "\n", outContent.toString());
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\n";
+		assertEquals(expectedOutput, outContent.toString());
 		
 	}
 
