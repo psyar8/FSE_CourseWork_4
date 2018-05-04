@@ -778,4 +778,41 @@ public class CompanyEmailSystemJUnitTest {
 		
 	}
 
+	
+	@Test
+	/* 
+	 * Testing: Add Email Validity 
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 325
+	 * Date Tested: 04/05/2018 
+	 * Test Result: FAIL
+	 * Notes: Tests the process of adding an email after providing invalid recipient and 
+	 * 		  Sender email addresses
+	 * 
+	 */
+	public void testAddEmail_InvalidEmail_325() {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		CompanyEmailSystem.currentProjShowing = 0;
+		outContent.reset();
+		
+		sysInput = "\n" + kBADEMAIL1 + "\n" + kSENDER + "\n" + kBADEMAIL2 + "\n" + kRECIPIENT + "\n" + "\n" + kSUBJECT + "\n" + kBODY1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddEmail(inScan);
+		String expectedOutput = 
+				  "Which email address is it from?\n"
+				  + "Invalid Email: Which email address is it from?\n"
+				  + "Which email address is it to?\n"
+				  + "Invalid Email: Which email address is it to?\n"
+				  + "What is the Subject?\n"
+				  + "What is the Message?\n"
+				  + "[Email added to " + kPTITLE1 + " [Feasibility]]\n";
+				  
+		assertEquals(expectedOutput, outContent.toString());
+		
+	}
+	
 }

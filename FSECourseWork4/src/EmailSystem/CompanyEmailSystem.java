@@ -234,20 +234,80 @@ public class CompanyEmailSystem {
         }
     }
     
+    
+    /*
+     * Change Impact: ListProject
+     * ChangeID: CHGE312
+     * Author: Aidan Reed
+     * Date: 04/05/2018
+     * Notes: Redesigned email function to scan for correct input
+     * 		  loops round until correct item is provided
+     */
     public static void AddEmail(Scanner in) {
-        System.out.println("Which email address is it from?");
-        in.nextLine(); //to remove read-in bug
-        String fromAddress = in.nextLine();
-        System.out.println("Which email address is it to?");
-        String toAddress = in.nextLine();
-        System.out.println("What is the Subject?");
-        String subjectLine = in.nextLine();
-        System.out.println("What is the Message?");
-        String emailBody = in.nextLine();
+        
+        String fromAddress;
+        String toAddress;
+        String subject;
+        String msg;
+        String sysOut = "Which email address is it from?";
         CompanyProject cp = AllProjects.get(currentProjShowing);
-        CompanyEmail ce = new CompanyEmail(fromAddress,toAddress,subjectLine,emailBody);
+        CompanyEmail ce = new CompanyEmail();
+        in.nextLine(); //to remove read-in bug
+        Boolean fromValErr = true;
+        while (fromValErr) {
+        	System.out.println(sysOut);
+        	fromAddress = in.nextLine();
+        	if (ce.setFrom(fromAddress)) {
+        		fromValErr = false;
+        	} else {
+        		sysOut = "Invalid Email: Which email address is it from?";
+        	}
+        }
+        
+        sysOut = "Which email address is it to?";
+        
+        Boolean toValErr = true;
+        while (toValErr) {
+        	System.out.println(sysOut);
+        	toAddress = in.nextLine();
+        	if (ce.setTo(toAddress)) {
+        		toValErr = false;
+        	} else {
+        		sysOut = "Invalid Email: Which email address is it to?";
+        	}
+        }
+        
+        sysOut = "What is the Subject?";
+        
+        Boolean subValErr = true;
+        while (subValErr) {
+        	System.out.println(sysOut);
+        	subject = in.nextLine();
+        	if (subject != null) {
+        		subValErr = false;
+        		ce.setSubject(subject);
+        	} else {
+        		sysOut = "Invalid Subject: What is the Subject?)";
+        	}
+        }
+        
+        sysOut = "What is the Message?";
+        
+        Boolean msgValErr = true;
+        while (msgValErr) {
+        	System.out.println(sysOut);
+        	msg = in.nextLine();
+        	if (msg.length() > 1) {
+        		msgValErr = false;
+        		ce.setMessage(msg);
+        	} else {
+        		sysOut = "Invalid Message: What is the Message?)";
+        	}
+        }
+        
         cp.addEmail(ce);
         System.out.println("[Email added to " + cp.toString() + "]");
+        
     }
     
     public static void ChangeProjectPhase() {
