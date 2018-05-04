@@ -25,8 +25,8 @@ public class CompanyEmailSystemJUnitTest {
 	InputStream inStream = new ByteArrayInputStream(sysInput.getBytes());
 	
 	
-
-	String kPTITLE1 = "Email System";
+	final String kSYSTEM_LINE_BREAK = System.lineSeparator();
+	final String kPTITLE1 = "Email System";
 	final String kDEFAULTTITLE = "New Project";
 	final String kSENDER = "joe.bloggs@gmail.com";
 	final String kRECIPIENT = "max.power@live.com";
@@ -70,7 +70,7 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testMenuOptions_OnStartUp_301() {
 		CompanyEmailSystem.main(null);
-		String expectedOutput = "What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n";
+		String expectedOutput = "What do you want to do?" + "\n" + " P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it" + kSYSTEM_LINE_BREAK;
 		assertEquals(expectedOutput , outContent.toString());	
 	}
 	
@@ -95,8 +95,8 @@ public class CompanyEmailSystemJUnitTest {
 		System.setIn(inStream);
 		/* After setting up the streams a call main is made - immediately takes the X and closes - AR 30.04.2018*/
 		CompanyEmailSystem.main(null);
-		String expectedOutput = "What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\nGoodbye!";
-		assertEquals(expectedOutput + "\n", outContent.toString());
+		String expectedOutput = "What do you want to do?" + "\n" + " P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it" + kSYSTEM_LINE_BREAK + "Goodbye!";
+		assertEquals(expectedOutput + kSYSTEM_LINE_BREAK + "", outContent.toString());
 	}
 	
 	
@@ -117,7 +117,7 @@ public class CompanyEmailSystemJUnitTest {
 		/* Initialized the projects array because method is tested without running main - AR 30.04.2018 */
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		for (int i = 0; i < 10000; i++) {
-			sysInput = "\n" + kPTITLE1 + i;
+			sysInput = "" + kSYSTEM_LINE_BREAK + kPTITLE1 + i;
 			inScan = new Scanner(sysInput);
 			CompanyEmailSystem.AddProject(inScan);
 		}
@@ -141,7 +141,7 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		
 		for (int i = 0; i < 5; i++) {
-			sysInput = "\n" + kPTITLE1 + i; 
+			sysInput = "" + kSYSTEM_LINE_BREAK + kPTITLE1 + i; 
 			inScan = new Scanner(sysInput);
 			CompanyEmailSystem.AddProject(inScan);
 		}
@@ -151,13 +151,13 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.ListProjects();
 		
 		String expectedOutput = 
-				  "1) " + kPTITLE1 + "0 [Feasibility] - 0 emails\n"
-				+ "2) " + kPTITLE1 + "1 [Feasibility] - 0 emails\n"
-				+ "3) " + kPTITLE1 + "2 [Feasibility] - 0 emails\n"
-				+ "4) " + kPTITLE1 + "3 [Feasibility] - 0 emails\n"
+				  "1) " + kPTITLE1 + "0 [Feasibility] - 0 emails" + kSYSTEM_LINE_BREAK + ""
+				+ "2) " + kPTITLE1 + "1 [Feasibility] - 0 emails" + kSYSTEM_LINE_BREAK + ""
+				+ "3) " + kPTITLE1 + "2 [Feasibility] - 0 emails" + kSYSTEM_LINE_BREAK + ""
+				+ "4) " + kPTITLE1 + "3 [Feasibility] - 0 emails" + kSYSTEM_LINE_BREAK + ""
 				+ "5) " + kPTITLE1 + "4 [Feasibility] - 0 emails";
 		
-		assertEquals(expectedOutput + "\n", outContent.toString());		
+		assertEquals(expectedOutput + kSYSTEM_LINE_BREAK + "", outContent.toString());		
 	}
 	
 	
@@ -178,7 +178,7 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		
 		for (int i = 0; i < 6 ; i++) {
-			sysInput = "\n" + kPTITLE1 + i; 
+			sysInput = "" + kSYSTEM_LINE_BREAK + kPTITLE1 + i; 
 			inScan = new Scanner(sysInput);
 			CompanyEmailSystem.AddProject(inScan);
 			for (int y = 0; y < i; y++) {
@@ -191,14 +191,14 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.ListProjects();
 		
 		String expectedOutput = 
-				  "1) " + kPTITLE1 + "0 [Feasibility] - 0 emails\n"
-				+ "2) " + kPTITLE1 + "1 [Design] - 0 emails\n"
-				+ "3) " + kPTITLE1 + "2 [Implementation] - 0 emails\n"
-				+ "4) " + kPTITLE1 + "3 [Testing] - 0 emails\n"
-				+ "5) " + kPTITLE1 + "4 [Deployment] - 0 emails\n"
+				  "1) " + kPTITLE1 + "0 [Feasibility] - 0 emails" + kSYSTEM_LINE_BREAK + ""
+				+ "2) " + kPTITLE1 + "1 [Design] - 0 emails" + kSYSTEM_LINE_BREAK + ""
+				+ "3) " + kPTITLE1 + "2 [Implementation] - 0 emails" + kSYSTEM_LINE_BREAK + ""
+				+ "4) " + kPTITLE1 + "3 [Testing] - 0 emails" + kSYSTEM_LINE_BREAK + ""
+				+ "5) " + kPTITLE1 + "4 [Deployment] - 0 emails" + kSYSTEM_LINE_BREAK + ""
 				+ "6) " + kPTITLE1 + "5 [Completed] - 0 emails";
 		
-		assertEquals(expectedOutput + "\n", outContent.toString());		
+		assertEquals(expectedOutput + kSYSTEM_LINE_BREAK + "", outContent.toString());		
 	}
 	
 	
@@ -217,12 +217,12 @@ public class CompanyEmailSystemJUnitTest {
 	public void testListProjects_10KEmail_306 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		/* Creating the project for 10k Emails */
-		sysInput = "\n" + kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		for (int i = 0; i < 10000 ; i++) {
-			sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
+			sysInput = "" + kSYSTEM_LINE_BREAK + kSENDER + kSYSTEM_LINE_BREAK + kRECIPIENT + kSYSTEM_LINE_BREAK + kSUBJECT + kSYSTEM_LINE_BREAK + kBODY1;
 			inScan = new Scanner(sysInput);
 			CompanyEmailSystem.AddEmail(inScan);
 		}
@@ -234,7 +234,7 @@ public class CompanyEmailSystemJUnitTest {
 		String expectedOutput = 
 				  "1) " + kPTITLE1 + " [Feasibility] - 10000 emails";
 		
-		assertEquals(expectedOutput + "\n", outContent.toString());	
+		assertEquals(expectedOutput + kSYSTEM_LINE_BREAK + "", outContent.toString());	
 	}
 	
 	
@@ -253,11 +253,11 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testAddProject_WithTitle_307 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" + kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
-		String expectedOutput = "What is the title of the project?\n[Project added]";
-		assertEquals(expectedOutput + "\n", outContent.toString());	
+		String expectedOutput = "What is the title of the project?" + kSYSTEM_LINE_BREAK + "[Project added]";
+		assertEquals(expectedOutput + kSYSTEM_LINE_BREAK + "", outContent.toString());	
 	}
 	
 	@Test 
@@ -275,7 +275,7 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testAddProject_WithTitle_ChecksIsSet_308 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" + kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK + kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		assertEquals(kPTITLE1, CompanyEmailSystem.AllProjects.get(0).getPTitle());
@@ -297,7 +297,7 @@ public class CompanyEmailSystemJUnitTest {
 	public void testAddProject_NoTitle_309 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		/* SysInput similated user not inputting data AR - 1.05.2018*/
-		sysInput = "\n \n";
+		sysInput = "" + kSYSTEM_LINE_BREAK + " " + kSYSTEM_LINE_BREAK;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		/*kDEFAULTTITLE Is defined at the top of the document */
@@ -325,7 +325,7 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.AddProject(inScan);
 		/* Adding the email to the project - AR 1.05.2018 */
 	
-		sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
+		sysInput = "\n" + kSENDER + kSYSTEM_LINE_BREAK + kRECIPIENT + kSYSTEM_LINE_BREAK + kSUBJECT + kSYSTEM_LINE_BREAK + kBODY1;
 		inScan = new Scanner(sysInput);
 		/* Manually setting the current project to add email to - AR 1.05.2018 */
 		CompanyEmailSystem.currentProjShowing = 0;
@@ -334,11 +334,11 @@ public class CompanyEmailSystemJUnitTest {
 		outContent.reset();
 		CompanyEmailSystem.ListEmails(0);
 		String expectedOutput = 
-				"Email System [Feasibility]\n" + 
+				"Email System [Feasibility]" + kSYSTEM_LINE_BREAK + 
 				"\n" + 
-				"   From                Subject\n" + 
-				"--------------------------------\n" + 
-				"1) " + kSENDER + " - " + kSUBJECT + "\n";
+				"   From                Subject" + kSYSTEM_LINE_BREAK + 
+				"--------------------------------" + kSYSTEM_LINE_BREAK + 
+				"1) " + kSENDER + " - " + kSUBJECT + kSYSTEM_LINE_BREAK;
 		
 		assertEquals(expectedOutput, outContent.toString());	
 	}
@@ -359,7 +359,7 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testListEmails_Invalid_311 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		
@@ -368,7 +368,7 @@ public class CompanyEmailSystemJUnitTest {
 		
 		
 		CompanyEmailSystem.ListEmails(20000);
-		String expectedOutput = "Error: Unknown Phase\n";
+		String expectedOutput = "Error: Unknown Phase" + kSYSTEM_LINE_BREAK;
 		assertEquals(expectedOutput, outContent.toString());	
 	}
 	
@@ -388,13 +388,13 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testListPhases_InitialPhase_312 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		/* Adding some emails to the initial stage */
 		for (int i = 0; i < 5 ; i++) {
-				sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
+				sysInput = "" + kSYSTEM_LINE_BREAK + kSENDER + kSYSTEM_LINE_BREAK + kRECIPIENT + kSYSTEM_LINE_BREAK + kSUBJECT + kSYSTEM_LINE_BREAK + kBODY1;
 				inScan = new Scanner(sysInput);
 				CompanyEmailSystem.AddEmail(inScan);
 		}
@@ -402,7 +402,7 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.ListPhases();
 		
 		String expectedOutput = 
-				  "1) Feasibility - 5 Emails\n";
+				  "1) Feasibility - 5 Emails" + kSYSTEM_LINE_BREAK;
 				
 		assertEquals(expectedOutput, outContent.toString());	
 	}
@@ -425,13 +425,13 @@ public class CompanyEmailSystemJUnitTest {
 	
 	public void testListPhases_AllPhases_313 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		for (int i = 0; i < 6 ; i++) {
 			for (int y = 0; y <= i; y++) {
-				sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
+				sysInput = "" + kSYSTEM_LINE_BREAK + kSENDER + kSYSTEM_LINE_BREAK + kRECIPIENT + kSYSTEM_LINE_BREAK + kSUBJECT + kSYSTEM_LINE_BREAK + kBODY1;
 				inScan = new Scanner(sysInput);
 				CompanyEmailSystem.AddEmail(inScan);
 			}
@@ -442,15 +442,15 @@ public class CompanyEmailSystemJUnitTest {
 		CompanyEmailSystem.ListPhases();
 		
 		String expectedOutput = 
-				  "1) Feasibility - 1 Emails\n"
-				+ "2) Design - 2 Emails\n"
-				+ "3) Implementation - 3 Emails\n"
-				+ "4) Testing - 4 Emails\n"
-				+ "5) Deployment - 5 Emails\n"
+				  "1) Feasibility - 1 Emails" + kSYSTEM_LINE_BREAK + ""
+				+ "2) Design - 2 Emails" + kSYSTEM_LINE_BREAK + ""
+				+ "3) Implementation - 3 Emails" + kSYSTEM_LINE_BREAK + ""
+				+ "4) Testing - 4 Emails" + kSYSTEM_LINE_BREAK + ""
+				+ "5) Deployment - 5 Emails" + kSYSTEM_LINE_BREAK + ""
 				+ "6) Completed - 6 Emails";
 				
 			
-		assertEquals(expectedOutput + "\n", outContent.toString());	
+		assertEquals(expectedOutput + kSYSTEM_LINE_BREAK + "", outContent.toString());	
 	}
 	
 	
@@ -466,7 +466,7 @@ public class CompanyEmailSystemJUnitTest {
 	 */
 	public void testListContacts_314 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
@@ -478,9 +478,9 @@ public class CompanyEmailSystemJUnitTest {
 		/* Creating OutStream */
 		outContent.reset();
 		String expectedOutput = 
-				  "1) " + kCONTACT1 + "\n"
-				+ "2) " + kCONTACT2 + "\n"
-				+ "3) " + kCONTACT3 + "\n";
+				  "1) " + kCONTACT1 + kSYSTEM_LINE_BREAK + ""
+				+ "2) " + kCONTACT2 + kSYSTEM_LINE_BREAK + ""
+				+ "3) " + kCONTACT3 + kSYSTEM_LINE_BREAK;
 				
 		CompanyEmailSystem.ListContacts();
 		assertEquals(expectedOutput, outContent.toString());	
@@ -499,21 +499,21 @@ public class CompanyEmailSystemJUnitTest {
 	 */
 	public void testAddEmail_315 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		outContent.reset();
 		
-		sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1 + "\n";
+		sysInput = "" + kSYSTEM_LINE_BREAK + kSENDER + kSYSTEM_LINE_BREAK + kRECIPIENT + kSYSTEM_LINE_BREAK + kSUBJECT + kSYSTEM_LINE_BREAK + kBODY1 + kSYSTEM_LINE_BREAK;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddEmail(inScan);
 		String expectedOutput = 
-				  "Which email address is it from?\n"
-				  + "Which email address is it to?\n"
-				  + "What is the Subject?\n"
-				  + "What is the Message?\n"
-				  + "[Email added to " + kPTITLE1 + " [Feasibility]]\n";
+				  "Which email address is it from?" + kSYSTEM_LINE_BREAK + ""
+				  + "Which email address is it to?" + kSYSTEM_LINE_BREAK + ""
+				  + "What is the Subject?" + kSYSTEM_LINE_BREAK + ""
+				  + "What is the Message?" + kSYSTEM_LINE_BREAK + ""
+				  + "[Email added to " + kPTITLE1 + " [Feasibility]]" + kSYSTEM_LINE_BREAK;
 				
 		assertEquals(expectedOutput, outContent.toString());	
 	}
@@ -535,13 +535,13 @@ public class CompanyEmailSystemJUnitTest {
 	 */
 	public void testNextPhase_317 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		outContent.reset();
 		String expectedOutput = 
-				  "[Phase changed: Email System [Design]\n";
+				  "[Phase changed: Email System [Design]" + kSYSTEM_LINE_BREAK;
 		
 		CompanyEmailSystem.ChangeProjectPhase();
 		assertEquals(expectedOutput, outContent.toString());	
@@ -560,17 +560,17 @@ public class CompanyEmailSystemJUnitTest {
 	 */
 	public void testNextPhaseAllPhases_318 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		outContent.reset();
 		String expectedOutput = 
-				  "[Phase changed: Email System [Design]\n"
-				  + "[Phase changed: Email System [Implementation]\n"
-				  + "[Phase changed: Email System [Testing]\n"
-				  + "[Phase changed: Email System [Deployment]\n"
-				  + "[Phase changed: Email System [Completed]\n";
+				  "[Phase changed: Email System [Design]" + kSYSTEM_LINE_BREAK + ""
+				  + "[Phase changed: Email System [Implementation]" + kSYSTEM_LINE_BREAK + ""
+				  + "[Phase changed: Email System [Testing]" + kSYSTEM_LINE_BREAK + ""
+				  + "[Phase changed: Email System [Deployment]" + kSYSTEM_LINE_BREAK + ""
+				  + "[Phase changed: Email System [Completed]" + kSYSTEM_LINE_BREAK;
 		for (int i = 0; i < 5; i++) {
 			CompanyEmailSystem.ChangeProjectPhase();
 		}
@@ -591,13 +591,13 @@ public class CompanyEmailSystemJUnitTest {
 	 */
 	public void testNextPhasePastLast_319 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		
 		String expectedOutput = 
-				  "Project already in last phase.\n";
+				  "Project already in last phase." + kSYSTEM_LINE_BREAK;
 		for (int i = 0; i < 6; i++) {
 			CompanyEmailSystem.ChangeProjectPhase();
 		}
@@ -623,11 +623,11 @@ public class CompanyEmailSystemJUnitTest {
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
-				"Command not recognised\n" +
-				"What do you want to do?\n" +
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\n";
+		String expectedOutput = "What do you want to do?" + "\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it" + kSYSTEM_LINE_BREAK + 
+				"Command not recognised" + kSYSTEM_LINE_BREAK +
+				"What do you want to do?" + "\n" +
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software" + kSYSTEM_LINE_BREAK;
 	
 		assertEquals(expectedOutput, outContent.toString());
 	}
@@ -651,10 +651,10 @@ public class CompanyEmailSystemJUnitTest {
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
-				"What do you want to do?\n" + 
-				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\n";
+		String expectedOutput = "What do you want to do?" + "\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it" + kSYSTEM_LINE_BREAK + 
+				"What do you want to do?" + "\n" + 
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project" + kSYSTEM_LINE_BREAK;
 		assertEquals(expectedOutput, outContent.toString());
 	}
 	
@@ -675,11 +675,11 @@ public class CompanyEmailSystemJUnitTest {
 	 * 
 	 */
 	public void testMenuOptions_InvalidProjects_322() {
-		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
-				"Command not recognised\n" + 
-				"What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\n";
+		String expectedOutput = "What do you want to do?" + "\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it" + kSYSTEM_LINE_BREAK + 
+				"Command not recognised" + kSYSTEM_LINE_BREAK + 
+				"What do you want to do?" + "\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software" + kSYSTEM_LINE_BREAK;
 		
 		sysInput = "-1";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
@@ -722,11 +722,11 @@ public class CompanyEmailSystemJUnitTest {
 	 * Notes: Testing projects "1", "2" and "3" display project menu once loaded.
 	 * 
 	 */
-	public void testMenuOptions_ExistingProjects_232() {
-		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" + 
-				"What do you want to do?\n" + 
-				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\n";
+	public void testMenuOptions_ExistingProjects_323() {
+		String expectedOutput = "What do you want to do?" + "\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it" + kSYSTEM_LINE_BREAK + 
+				"What do you want to do?" + "\n" + 
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project" + kSYSTEM_LINE_BREAK;
 		
 		sysInput = "1";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
@@ -768,12 +768,12 @@ public class CompanyEmailSystemJUnitTest {
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
 		CompanyEmailSystem.main(null);
-		String expectedOutput = "What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n" +
-				"What do you want to do?\n" + 
-				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\n" +
-				"What do you want to do?\n" + 
-				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software\n";
+		String expectedOutput = "What do you want to do?" + "\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it" + kSYSTEM_LINE_BREAK +
+				"What do you want to do?" + "\n" + 
+				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project" + kSYSTEM_LINE_BREAK +
+				"What do you want to do?" + "\n" + 
+				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it Software" + kSYSTEM_LINE_BREAK;
 		assertEquals(expectedOutput, outContent.toString());
 		
 	}
@@ -793,23 +793,23 @@ public class CompanyEmailSystemJUnitTest {
 	 */
 	public void testAddEmail_InvalidEmail_325() {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
-		sysInput = "\n" +  kPTITLE1;
+		sysInput = "" + kSYSTEM_LINE_BREAK +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
 		CompanyEmailSystem.currentProjShowing = 0;
 		outContent.reset();
 		
-		sysInput = "\n" + kBADEMAIL1 + "\n" + kSENDER + "\n" + kBADEMAIL2 + "\n" + kRECIPIENT + "\n" + "\n" + kSUBJECT + "\n" + kBODY1;
+		sysInput = "" + kSYSTEM_LINE_BREAK + kBADEMAIL1 + kSYSTEM_LINE_BREAK + kSENDER + kSYSTEM_LINE_BREAK + kBADEMAIL2 + kSYSTEM_LINE_BREAK + kRECIPIENT + kSYSTEM_LINE_BREAK + "" + kSYSTEM_LINE_BREAK + kSUBJECT + kSYSTEM_LINE_BREAK + kBODY1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddEmail(inScan);
 		String expectedOutput = 
-				  "Which email address is it from?\n"
-				  + "Invalid Email: Which email address is it from?\n"
-				  + "Which email address is it to?\n"
-				  + "Invalid Email: Which email address is it to?\n"
-				  + "What is the Subject?\n"
-				  + "What is the Message?\n"
-				  + "[Email added to " + kPTITLE1 + " [Feasibility]]\n";
+				  "Which email address is it from?" + kSYSTEM_LINE_BREAK + ""
+				  + "Invalid Email: Which email address is it from?" + kSYSTEM_LINE_BREAK + ""
+				  + "Which email address is it to?" + kSYSTEM_LINE_BREAK + ""
+				  + "Invalid Email: Which email address is it to?" + kSYSTEM_LINE_BREAK + ""
+				  + "What is the Subject?" + kSYSTEM_LINE_BREAK + ""
+				  + "What is the Message?" + kSYSTEM_LINE_BREAK + ""
+				  + "[Email added to " + kPTITLE1 + " [Feasibility]]" + kSYSTEM_LINE_BREAK;
 				  
 		assertEquals(expectedOutput, outContent.toString());
 		
