@@ -68,11 +68,13 @@ public class CompanyEmailSystem {
          *        Projects can only be selected if the user input is
          *        above 0 and below/equal to size of ArrayList.
          */
+
         
         System.out.println("What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it");
         Scanner in = new Scanner(System.in);
         while (in.hasNextLine()){
             String s = in.next();
+            
             try{
             	/*CHGE308 Changed to -1*/
                 if(currentProjShowing == -1) {
@@ -109,7 +111,14 @@ public class CompanyEmailSystem {
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Something went wrong: " + e.toString() + "\n");
+                /*
+                 * Change Impact: Main Method
+                 * ChangeID: CHGE310
+                 * Author: Aidan Reed
+                 * Date: 03.05.2018
+                 * Notes: Added helpful message instead of displaying exception
+                 */
+            	System.out.println("Command not recognised");
             }
             /*CHGE308 Changed to -1*/
             if(currentProjShowing == -1) {
