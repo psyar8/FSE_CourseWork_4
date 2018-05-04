@@ -3,12 +3,15 @@ package JUnitTests;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
 import EmailSystem.CompanyEmail;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-
+@FixMethodOrder(MethodSorters.JVM)
 public class CompanyEmail_UnitTests {
 	
 	final String kSENDER = "joe.bloggs@gmail.com";
