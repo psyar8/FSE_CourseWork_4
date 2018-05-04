@@ -10,24 +10,7 @@ public class CompanyEmailSystem {
     public static ArrayList<CompanyProject> AllProjects;
     public static int currentProjShowing = -1;
     
-    /*
-     * Change Impact: Main Method
-     * ChangeID: CHGE308
-     * Author: Aidan Reed
-     * Date: 03/05/2018
-     * Notes: Initial state of currentProjShowing set to -1 
-     * 		  Menu logic has been changed to reflect this
-     * 		  Lines 75, 101, 112 Changed
-     */
-    /*
-     * Change Impact: Main Method
-     * ChangeID: CHGE309
-     * Author: Ram Raja
-     * Date: 03.05.2018
-     * Notes: Added bounds to project selection.
-     *        Projects can only be selected if the user input is
-     *        above 0 and below/equal to size of ArrayList.
-     */
+ 
     
     public static void main(String[] args) {
         
@@ -66,6 +49,25 @@ public class CompanyEmailSystem {
         AllProjects.add(cp3);
 
         /// END OF TEST DATA ///
+        
+        /*
+         * Change Impact: Main Method
+         * ChangeID: CHGE308
+         * Author: Aidan Reed
+         * Date: 03/05/2018
+         * Notes: Initial state of currentProjShowing set to -1 
+         * 		  Menu logic has been changed to reflect this
+         * 		  Lines 75, 101, 112 Changed
+         */
+        /*
+         * Change Impact: Main Method
+         * ChangeID: CHGE309
+         * Author: Ram Raja
+         * Date: 03.05.2018
+         * Notes: Added bounds to project selection.
+         *        Projects can only be selected if the user input is
+         *        above 0 and below/equal to size of ArrayList.
+         */
         
         System.out.println("What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it");
         Scanner in = new Scanner(System.in);

@@ -510,17 +510,12 @@ public class CompanyEmailSystemJUnitTest {
 				  + "Which email address is it to?\n"
 				  + "What is the Subject?\n"
 				  + "What is the Message?\n"
-				  + "[Email added to " + kPTITLE1 + "]";
+				  + "[Email added to " + kPTITLE1 + " [Feasibility]]";
 				
 		assertEquals(expectedOutput, outContent.toString());	
-	
 	}
 	
 
-	
-	
-	
-	
 	@Test
 	/* 
 	 * Testing: Project Menu Display Upon Project Selection 
@@ -534,7 +529,7 @@ public class CompanyEmailSystemJUnitTest {
 	 * 		  system should display the project menu list.
 	 * 
 	 */
-	public void testMenuOptions_ViewProject() {
+	public void testMenuOptions_ViewProject_316() {
 		sysInput = "2";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
 		System.setIn(inStream);
@@ -557,12 +552,12 @@ public class CompanyEmailSystemJUnitTest {
 	 * Co-Author: Aidan Reed
 	 * Test ID: 317
 	 * Date Tested: 03/05/2018 
-	 * Test Result: FAIL
+	 * Test Result: PASS
 	 * Notes: Testing projects "-1", "-7" and "7", "99" return 
 	 *        "Command not recognised" when attempted to be loaded.
 	 * 
 	 */
-	public void testMenuOptions_InvalidProjects() {
+	public void testMenuOptions_InvalidProjects_317() {
 		String expectedOutput = "What do you want to do?\n" + 
 				" P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\r\n" + 
 				"Command not recognised\r\n" + 
