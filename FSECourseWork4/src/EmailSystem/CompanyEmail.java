@@ -37,7 +37,7 @@ public class CompanyEmail {
     
     /*
      * Change Impact: emailMessage()
-     * ChangeID: CHG101
+     * ChangeID: CHGE101
      * Author: Aidan Reed
      * Date: 27.04.2018
      * Notes: Removed return emailMessage() Call and replaced with
@@ -50,14 +50,14 @@ public class CompanyEmail {
     
     /*
      * Change Impact: setFrom()
-     * ChangeID: CHG103
+     * ChangeID: CHGE103
      * Author: Aidan Reed
      * Date: 27.04.2018
      * Notes: Added method call to emailParser to validate email
      */
     /*
      * Change Impact: setFrom()
-     * ChangeID: CHG104
+     * ChangeID: CHGE104
      * Author: Athullya Roy
      * Date: 02.05.2018
      * Notes: Changed the return value from void to Boolean
@@ -72,14 +72,14 @@ public class CompanyEmail {
     
     /*
      * Change Impact: setTo()
-     * ChangeID: CHG103
+     * ChangeID: CHGE103
      * Author: Aidan Reed
      * Date: 27.04.2018
      * Notes: Added method call to emailParser to validate email
      */
     /*
      * Change Impact: setTo()
-     * ChangeID: CHG104
+     * ChangeID: CHGE104
      * Author: Athullya Roy
      * Date: 02.05.2018
      * Notes: Changed the return value from void to Boolean
@@ -94,7 +94,7 @@ public class CompanyEmail {
     
     /*
      * Change Impact: new method emailParser
-     * ChangeID: CHG103
+     * ChangeID: CHGE103
      * Author: Aidan Reed
      * Date: 27.04.2018
      * Notes: Added a regular expression to check the validity of emails returns 
@@ -128,7 +128,7 @@ public class CompanyEmail {
   
     /*
      * Change Impact: toString()
-     * ChangeID: CHG102
+     * ChangeID: CHGE102
      * Author: Aidan Reed
      * Date: 27.04.2018
      * Notes: Added check to see if subject line is null
