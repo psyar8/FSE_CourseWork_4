@@ -6,8 +6,6 @@ import EmailSystem.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -29,6 +27,9 @@ public class CompanyEmailSystemJUnitTest {
 	final String kDEFAULTTITLE = "New Project";
 	final String kSENDER = "joe.bloggs@gmail.com";
 	final String kRECIPIENT = "max.power@live.com";
+	final String kCONTACT1 = "test@gmail.com";
+	final String kCONTACT2 = "raiu9s@gmail.com";
+	final String kCONTACT3 = "q39ikdf@outlook.com";
 	final String kBADEMAIL1 = "joe.bloggs@";
 	final String kBADEMAIL2 = "joe.@bloggs";
 	final String kBADEMAIL3 = "joe.bloggs@gmail@.com";
@@ -58,13 +59,13 @@ public class CompanyEmailSystemJUnitTest {
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
 	 * Test ID: 301
-	 * Date Tested: 
-	 * Test Result:
+	 * Date Tested: 01.05.2018
+	 * Test Result: PASS
 	 * Notes: On load the user should be presented with a menu list
 	 * 		  No input is passed into the system
 	 */
 	
-	public void testMenuOptions_OnStartUp() {
+	public void testMenuOptions_OnStartUp_301() {
 		CompanyEmailSystem.main(null);
 		String expectedOutput = "What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it\n";
 		assertEquals(expectedOutput , outContent.toString());	
@@ -77,14 +78,14 @@ public class CompanyEmailSystemJUnitTest {
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
 	 * Test ID: 302
-	 * Date Tested: 
-	 * Test Result:
+	 * Date Tested: 01.05.2018
+	 * Test Result: PASS
 	 * Notes: When main loads user is presented with a menu
 	 * 		  when selecting x the system should close down
 	 * 
 	 */
 	
-	public void testMenuOptions_ExitPrograms() {
+	public void testMenuOptions_ExitPrograms_302() {
 		/* Setting up the in stream to simulate user entering from console - AR 30.04.2018*/
 		sysInput = "X";
 		inStream = new ByteArrayInputStream(sysInput.getBytes());
@@ -102,14 +103,14 @@ public class CompanyEmailSystemJUnitTest {
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
 	 * Test ID: 303
-	 * Date Tested: 
-	 * Test Result:
+	 * Date Tested: 03.05.2018 | 02/05/2018 | 01/05/2018
+	 * Test Result: PASS       | FAIL		| FAIL
 	 * Notes: Creates 10,000 projects for one project. Ensuring one project can hold
 	 * 		  that many emails.  
 	 * 		  
 	 */
 	
-	public void testIncreaseProjectList_Large () {
+	public void testIncreaseProjectList_Large_303 () {
 		/* Initialized the projects array because method is tested without running main - AR 30.04.2018 */
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		for (int i = 0; i < 10000; i++) {
@@ -126,14 +127,14 @@ public class CompanyEmailSystemJUnitTest {
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
 	 * Test ID: 304
-	 * Date Tested: 
-	 * Test Result:
+	 * Date Tested: 03.05.2018 | 02/05/2018 | 01/05/2018
+	 * Test Result: PASS       | FAIL       | FAIL
 	 * Notes: Tests the projects are listed correctly 
 	 * 		  Manually initialises project array and creates 5 projects  
 	 * 
 	 */
 	
-	public void testListProjects () {
+	public void testListProjects_304 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		
 		for (int i = 0; i < 5; i++) {
@@ -163,15 +164,14 @@ public class CompanyEmailSystemJUnitTest {
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
 	 * Test ID: 305
-	 * Date Tested: 
-	 * Test Result:
+	 * Date Tested: 03.05.2018 | 02/05/2018 | 01/05/2018
+	 * Test Result: PASS       | FAIL       | FAIL
 	 * Notes: Tests the projects are listed correctly 
 	 * 		  Manually initialises project array and creates 6 projects
 	 * 		  Each project is set to one of the stages  
-	 * 
 	 */
 	
-	public void testListProjects_AllStages () {
+	public void testListProjects_AllStages_305 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		
 		for (int i = 0; i < 6 ; i++) {
@@ -204,14 +204,14 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: List Projects
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
-	 * Test ID: 305
-	 * Date Tested: 01/05/2018
-	 * Test Result: FAIL
+	 * Test ID: 306
+	 * Date Tested: 03.05.2018 | 02/05/2018 | 01/05/2018
+	 * Test Result: PASS       | FAIL       | FAIL
 	 * Notes: Create a project and then 10,000 emails to go inside
 	 * 		  When listing the projects 10,000 emails should be displayed
 	 * 		  
 	 */
-	public void testListProjects_10KEmail () {
+	public void testListProjects_10KEmail_306 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		/* Creating the project for 10k Emails */
 		sysInput = "\n" + kPTITLE1;
@@ -240,15 +240,15 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: Add Projects
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
-	 * Test ID: 306
-	 * Date Tested: 
-	 * Test Result:
+	 * Test ID: 307
+	 * Date Tested: 03.05.2018 | 02/05/2017 | 01/05/2018
+	 * Test Result: PASS       | FAIL       | FAIL
 	 * Notes: Project is created with specified title Using Scanner Object
 	 * 		  Project should be created. Checks system outputs [Project added]
 	 * 		 
 	 */
 	
-	public void testAddProject_WithTitle () {
+	public void testAddProject_WithTitle_307 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
@@ -262,15 +262,15 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: Add Projects
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
-	 * Test ID: 307
-	 * Date Tested: 
-	 * Test Result:
+	 * Test ID: 308
+	 * Date Tested: 03.05.2018 | 02/05/2017 | 01/05/2018
+	 * Test Result: PASS       | FAIL       | FAIL
 	 * Notes: Project is created with specified title Using Scanner Object
 	 * 		  Project should be created. Checks system outputs [Project added]
 	 * 		 
 	 */
 	
-	public void testAddProject_WithTitle_ChecksIsSet () {
+	public void testAddProject_WithTitle_ChecksIsSet_308 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
@@ -283,15 +283,15 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: Add Projects
 	 * Author: Aidan Reed
 	 * Co-Author: Athullya Roy
-	 * Test ID: 308
-	 * Date Tested: i
-	 * Test Result:
+	 * Test ID: 309
+	 * Date Tested: 03/05/2018 | 03.05.2018 | 02/05/2017 | 01/05/2018
+	 * Test Result: PASS       | FAIL       | FAIL       | FAIL
 	 * Notes: Project created with no title provided. 
 	 * 		  As such default title should be given to project
 	 * 
 	 */
 	
-	public void testAddProject_NoTitle () {
+	public void testAddProject_NoTitle_309 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		/* SysInput similated user not inputting data AR - 1.05.2018*/
 		sysInput = "\n \n";
@@ -307,15 +307,15 @@ public class CompanyEmailSystemJUnitTest {
 	 * Testing: List Emails
 	 * Author: Aidan Reed
 	 * Co-Author: Ram Raja
-	 * Test ID: 309
-	 * Date Tested: 
-	 * Test Result:
+	 * Test ID: 310
+	 * Date Tested: 03.05.2018 | 02/05/2017 | 01/05/2018
+	 * Test Result: PASS       | FAIL       | FAIL
 	 * Notes: Tests the list email function only returns emails from current stage
 	 * 		  First test is the initial stage which should list all emails created
 	 * 
 	 */
 	
-	public void testListEmails_InitialPhase () {
+	public void testListEmails_InitialPhase_310 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		sysInput = "\n" + kPTITLE1;
 		inScan = new Scanner(sysInput);
@@ -344,17 +344,17 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: List Emails
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
-	 * Test ID: 310
-	 * Date Tested: 
-	 * Test Result:
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 311
+	 * Date Tested: 03.05.2017
+	 * Test Result: Christian Stubbs
 	 * Notes: Tests the list email function only returns an error when an 
 	 * 		  invalid phaseID is passed
 	 * 
 	 */
 	
-	public void testListEmails_Invalid () {
+	public void testListEmails_Invalid_311 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		sysInput = "\n" +  kPTITLE1;
 		inScan = new Scanner(sysInput);
@@ -373,16 +373,17 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: List Phase
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
-	 * Test ID: 311
-	 * Date Tested: 
-	 * Test Result:
-	 * Notes: Tests the list email function 
-	 * 
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 312
+	 * Date Tested: 03.05.2018 
+	 * Test Result: PASS (Post BUG304 fix) 
+	 * Notes: Tests the list phase for a project in the initial stages
+	 * 		  An error in the List Phases method prevented this test from
+	 * 		  Initially Passing
 	 */
 	
-	public void testListPhases_InitialPhase () {
+	public void testListPhases_InitialPhase_312 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		sysInput = "\n" +  kPTITLE1;
 		inScan = new Scanner(sysInput);
@@ -408,21 +409,23 @@ public class CompanyEmailSystemJUnitTest {
 	@Test 
 	/* 
 	 * Testing: List Phase
-	 * Author: Aidan Reed
-	 * Co-Author: Ram Raja
-	 * Test ID: 311
-	 * Date Tested: 
-	 * Test Result:
-	 * Notes: Tests the list email function 
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 313
+	 * Date Tested: 03/05/2018
+	 * Test Result: PASS (Post bug fix 304 and 305)
+	 * Notes: Tests a project after it has been completed and ensures  
+	 * 		  the function lists the correct phases and email counts
+	 * 		  at each phase. 
 	 * 
 	 */
 	
-	public void testListPhases_AllPhases () {
+	public void testListPhases_AllPhases_313 () {
 		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
 		sysInput = "\n" +  kPTITLE1;
 		inScan = new Scanner(sysInput);
 		CompanyEmailSystem.AddProject(inScan);
-		
+		CompanyEmailSystem.currentProjShowing = 0;
 		for (int i = 0; i < 6 ; i++) {
 			for (int y = 0; y <= i; y++) {
 				sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1;
@@ -446,6 +449,75 @@ public class CompanyEmailSystemJUnitTest {
 			
 		assertEquals(expectedOutput + "\n", outContent.toString());	
 	}
+	
+	
+	@Test 
+	/* 
+	 * Testing: List Contacts
+	 * Author: Ram Raja
+	 * Co-Author: Aidan Reed
+	 * Test ID: 314
+	 * Date Tested: 03/05/2018
+	 * Test Result: PASS
+	 * Notes: Ensures the correct contacts are returned in the initial phase
+	 */
+	public void testListContacts_314 () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		CompanyEmailSystem.currentProjShowing = 0;
+		
+		/* Adding contacts */
+		CompanyEmailSystem.AllProjects.get(0).addContact(kCONTACT1);
+		CompanyEmailSystem.AllProjects.get(0).addContact(kCONTACT2);
+		CompanyEmailSystem.AllProjects.get(0).addContact(kCONTACT3);
+		/* Creating OutStream */
+		outContent.reset();
+		String expectedOutput = 
+				  "1) " + kCONTACT1 + "\n"
+				+ "2) " + kCONTACT2 + "\n"
+				+ "3) " + kCONTACT3 + "\n";
+				
+		CompanyEmailSystem.ListContacts();
+		assertEquals(expectedOutput, outContent.toString());	
+	
+	}
+	
+	@Test 
+	/* 
+	 * Testing: Add Email
+	 * Author: Aidan Reed
+	 * Co-Author: Ram Raja
+	 * Test ID: 315
+	 * Date Tested: 03/05/2018
+	 * Test Result: PASS
+	 * Notes: Tests the system presents correct prompts when adding an email
+	 */
+	public void testAddEmail_315 () {
+		CompanyEmailSystem.AllProjects = new ArrayList<CompanyProject>();
+		sysInput = "\n" +  kPTITLE1;
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddProject(inScan);
+		CompanyEmailSystem.currentProjShowing = 0;
+		outContent.reset();
+		
+		sysInput = "\n" + kSENDER + "\n" + kRECIPIENT + "\n" + kSUBJECT + "\n" + kBODY1 + "\n";
+		inScan = new Scanner(sysInput);
+		CompanyEmailSystem.AddEmail(inScan);
+		String expectedOutput = 
+				  "Which email address is it from?\n"
+				  + "Which email address is it to?\n"
+				  + "What is the Subject?\n"
+				  + "What is the Message?\n"
+				  + "[Email added to " + kPTITLE1 + "]";
+				
+		assertEquals(expectedOutput, outContent.toString());	
+	
+	}
+	
+
+	
 	
 	
 	
@@ -473,6 +545,10 @@ public class CompanyEmailSystemJUnitTest {
 				" L = [L]ist Emails, A = [A]dd Email, F = List Phase [F]olders, N = Move to [N]ext Phase, [num] = List Emails in Phase [num], C = List [C]ontacts, X =  E[x]it Project\r";
 		assertEquals(expectedOutput + "\n", outContent.toString());
 	}
+	
+	
+	
+	
 	
 	@Test
 	/* 
