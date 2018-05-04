@@ -1,15 +1,15 @@
 # FSE_CourseWork_4
 
-In this project we have developed JUnit tests for the code provided for the 3 classes- CompanyEmail, CompanyProject, and CompanyEmailSystem. We have build the tests based on the test plan that we previously created. We have documented the tests that we carried out and have stated whether the tests we performed have passed or failed. If a test has failed, we edited the code so that the test could pass. This is documented as change table in CompanyEmail.doc. 
+In this project we have developed JUnit tests for the code provided for the 3 classes- CompanyEmail, CompanyProject, and CompanyEmailSystem - All tests and modified code can be found under FSECoursework4. We have build the tests based on the test plan that we previously created. We have documented the tests that we carried out and have stated whether the tests we performed have passed or failed. If a test has failed, we edited the code so that the test could pass. This is documented as change table in CompanyEmail.doc. 
 
 ### The folder contains the following files:
-1. G51FSE-CourseWork4-Report.doc
-1. CompanyEmail.java
-1. CompanyEmail_UnitTests.java
-1. ComapanyEmailProject.java
-1. ComapanyEmailProject_UnitTests.java
-1. CompanyEmailSystem.java
-1. CompanyEmailSystem_UnitTests.java
+1. G51FSE-CourseWork4-Report.doc - root
+1. CompanyEmail.java -  FSECoursework4/src/EmailSystem
+1. CompanyEmail_UnitTests.java - FSECoursework4/src/JUnitTests
+1. ComapanyEmailProject.java - FSECoursework4/src/EmailSystem
+1. ComapanyEmailProject_UnitTests.java - FSECoursework4/src/JUnitTests
+1. CompanyEmailSystem.java - FSECoursework4/src/EmailSystem
+1. CompanyEmailSystem_UnitTests.java - FSECoursework4/src/JUnitTests
 
 Structure of Project
 ---------------------
